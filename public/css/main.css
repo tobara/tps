@@ -1,0 +1,22 @@
+body{
+  width: 100%;
+
+}
+
+main {
+  display:grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  height:100%;
+}
+
+.left-container{
+  background-color: #0000FF;
+}
+
+.right-container {
+  background-color: #0000FF;
+}
+
+form {
+  margin:0 auto;
+}
