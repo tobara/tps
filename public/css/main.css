@@ -12,7 +12,12 @@ html, body, main {
   display:grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: minmax(500px, 1000vh);
+}
 
+.new-user-container {
+  display:grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: minmax(500px, 1000vh);
 }
 
 .left-container{
@@ -36,6 +41,10 @@ form {
 }
 
 .logo {
+  margin: 0 auto;
+}
+
+.logo-register {
   margin: 0 auto;
 }
 
