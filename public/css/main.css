@@ -1,22 +1,111 @@
-body{
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+
+html, body {
   width: 100%;
+  height:100%;
+  margin: 0 0 0 0;
 
 }
 
 main {
   display:grid;
   grid-template-columns: 1fr 3fr 1fr;
-  height:100%;
+  grid-template-rows: minmax(500px, 1000vh);
+
+
 }
 
 .left-container{
-  background-color: #0000FF;
+  background-color: #4373C8;
 }
 
 .right-container {
-  background-color: #0000FF;
+  background-color: #4373C8;
+}
+
+.center-container {
+  display:grid;
+  grid-template-rows: 2% 1% auto;
+  margin:0 auto;
+}
+
+.logo {
+  margin: 0 auto;
 }
 
 form {
-  margin:0 auto;
+  margin: 0 auto;
+  padding-top: 40%;
 }
+
+
+
+form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: rgba(44, 100, 180, 1);
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: rgba(44, 100, 180, 1);
+  text-decoration: none;
+}
+
+
+
+
+/**** <---Media Queries Start---> ****/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+
+/**** <---Media Queries End---> ****/
+

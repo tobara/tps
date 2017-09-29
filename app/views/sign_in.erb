@@ -2,12 +2,17 @@
 <main>
 
   <div class="left-container"></div>
-  <form>
-    <label for="username">Username</label>
-    <input type="text" placeholder="Username" name="username"/>
-    <label for="password">Password</label>
-    <input type="text" placeholder="Password" name="password"/>
-    <button type="submit">Submit</button>
-  </form>
+  <div class="center-container">
+    <div class="logo">
+      <img src="./images/tps-logo.png" alt="tps logo">
+    </div>
+    <form class="form">
+      <input type="text" placeholder="Username" name="username"/>
+
+      <input type="text" placeholder="Password" name="password"/>
+      <button type="submit">LOGIN</button>
+      <p class="message">Not registered? <a href="/new_user">Create an account</a></p>
+    </form>
+  </div>
   <div class="right-container"></div>
 </main>
