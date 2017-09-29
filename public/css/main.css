@@ -1,24 +1,26 @@
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 
-html, body {
+html, body, main {
   width: 100%;
   height:100%;
   margin: 0 0 0 0;
-
 }
 
-main {
+.signin-container {
   display:grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: minmax(500px, 1000vh);
-
 
 }
 
 .left-container{
   background-color: #4373C8;
+  height: 100%;
 }
+
+
 
 .right-container {
   background-color: #4373C8;
@@ -28,6 +30,9 @@ main {
   display:grid;
   grid-template-rows: 2% 1% auto;
   margin:0 auto;
+}
+form {
+  margin: 0 auto;
 }
 
 .logo {
