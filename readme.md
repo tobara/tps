@@ -1,6 +1,7 @@
-#TPS
+# TPS
 
--Sinatra
--PG
+A tuition payment system enabling students to make their payments online.
 
-A tuition payment system generated for students to make their payments online.
+- Sinatra
+- ActiveRecord
+- PG

@@ -1,15 +1,14 @@
-body{
+body {
   width: 100%;
-
 }
 
 main {
   display:grid;
   grid-template-columns: 1fr 3fr 1fr;
-  height:100%;
+  height: 100%;
 }
 
-.left-container{
+.left-container {
   background-color: #0000FF;
 }
 
@@ -18,5 +17,5 @@ main {
 }
 
 form {
-  margin:0 auto;
+  margin: 0 auto;
 }
