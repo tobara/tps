@@ -6,18 +6,61 @@ html, body, main {
   width: 100%;
   height:100%;
   margin: 0 0 0 0;
+  font-family: "Roboto", sans-serif;
 }
+
 
 .signin-container {
   display:grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 8fr 1fr;
   grid-template-rows: minmax(500px, 1000vh);
 }
 
 .new-user-container {
   display:grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 8fr 1fr;
   grid-template-rows: minmax(500px, 1000vh);
+}
+
+.dashboard-container {
+  display:grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-rows: minmax(500px, 1000vh)
+}
+
+.center-container {
+  display:grid;
+  grid-template-rows: 2% 1% auto;
+  margin:0 auto;
+}
+
+.dashboard-center-container {
+  display:grid;
+  grid-template-rows: 192px 1% min-content;
+
+}
+
+.dashboard-navigation {
+  margin-top:1%;
+}
+
+.nav-wrapper {
+  background:rgba(44, 100, 180, 1);
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(50px, 1fr));
+  grid-template-rows: 8vh;
+  text-align: center;
+
+}
+
+.nav-item {
+  line-height: 8vh;
+}
+
+a {
+  color:#ffffff;
+  vertical-align: middle;
+  text-decoration: none;
 }
 
 .left-container{
@@ -26,16 +69,15 @@ html, body, main {
 }
 
 
-
 .right-container {
   background-color: #4373C8;
 }
 
-.center-container {
-  display:grid;
-  grid-template-rows: 2% 1% auto;
-  margin:0 auto;
+.form-new-user {
+  width:35%;
+  padding:10%;
 }
+
 form {
   margin: 0 auto;
 }
@@ -48,15 +90,16 @@ form {
   margin: 0 auto;
 }
 
-form {
-  margin: 0 auto;
+.form {
+ /* margin: 0 auto;*/
   padding-top: 40%;
 }
 
 
 
+
+
 form input {
-  font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
   width: 100%;
@@ -66,8 +109,7 @@ form input {
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
-  font-family: "Roboto", sans-serif;
+form button {
   text-transform: uppercase;
   outline: 0;
   background: rgba(44, 100, 180, 1);

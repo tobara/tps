@@ -10,6 +10,10 @@ get '/' do
   erb :sign_in
 end
 
+get '/dashboard' do
+  erb :dashboard
+end
+
 post '/session/new' do
 end
 
