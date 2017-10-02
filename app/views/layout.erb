@@ -2,10 +2,16 @@
 <html>
   <head>
     <meta charset="utf8">
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
     <title>Tuition Payment System</title>
   </head>
   <body>
+    <% flash.keys.each do |type| %>
+      <div data-alert class="flash <%= type %> alert-box radius">
+        <%= flash[type] %>
+        <a href="#" class="close">&times;</a>
+      </div>
+    <% end %>
     <main><%= yield %></main>
   </body>
 </html>

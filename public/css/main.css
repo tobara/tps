@@ -12,7 +12,12 @@ html, body, main {
   display:grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: minmax(500px, 1000vh);
+}
 
+.new-user-container {
+  display:grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: minmax(500px, 1000vh);
 }
 
 .left-container{
@@ -36,6 +41,10 @@ form {
 }
 
 .logo {
+  margin: 0 auto;
+}
+
+.logo-register {
   margin: 0 auto;
 }
 
@@ -82,7 +91,23 @@ form input {
   text-decoration: none;
 }
 
+/*****flash notifications*****/
 
+.alert-box {
+    color:#FFFFFF;
+    background: rgba(44, 100, 180, 1);
+    font-family: "Roboto", sans-serif;
+    font-size:15px;
+    padding:10px 10px 10px 36px;
+    text-align:center;
+}
+
+.alert-box span {
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+/*****flash notifications end******/
 
 
 /**** <---Media Queries Start---> ****/
