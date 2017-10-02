@@ -91,7 +91,23 @@ form input {
   text-decoration: none;
 }
 
+/*****flash notifications*****/
 
+.alert-box {
+    color:#FFFFFF;
+    background: rgba(44, 100, 180, 1);
+    font-family: "Roboto", sans-serif;
+    font-size:15px;
+    padding:10px 10px 10px 36px;
+    text-align:center;
+}
+
+.alert-box span {
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+/*****flash notifications end******/
 
 
 /**** <---Media Queries Start---> ****/
