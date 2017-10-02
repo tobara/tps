@@ -21,7 +21,7 @@ describe('New User Sign-Up', {:type => :feature}) do
 
     fill_in 'username', with: 'prodigy_internet'
     fill_in 'password', with: 'Cardinal99!'
-    fill_in 'password_confirmation', with: '123abc'
+    fill_in 'password_confirmation', with: 'Cardinal99!'
     fill_in 'first_name', with: 'Charlie'
     fill_in 'last_name', with: 'Smith'
     fill_in 'email', with: 'charlie.smith@gmail.com'
@@ -35,7 +35,7 @@ describe('New User Sign-Up', {:type => :feature}) do
     visit('/user/new')
 
     fill_in 'username', with: 'prodigy_internet'
-
+    fill_in 'password', with: 'Cardinal99!'
     fill_in 'password_confirmation', with: '123abc'
     fill_in 'first_name', with: 'Charlie'
     fill_in 'last_name', with: 'Smith'

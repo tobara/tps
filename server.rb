@@ -18,13 +18,13 @@ get '/user/new' do
 end
 
 post '/user/new' do
-
   user = User.new(
-    :username => params["username"],
-    :email => params["email"],
-    :first_name => params["first_name"],
-    :last_name => params["last_name"],
-    :password => params["password"]
+    :username => params[:username],
+    :email => params[:email],
+    :first_name => params[:first_name],
+    :last_name => params[:last_name],
+    :password => params[:password],
+    :password_confirmation => params[:password_confirmation]
   )
 
   if user.save
