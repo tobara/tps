@@ -14,7 +14,7 @@ html, body {
 .tps__main { grid-area: main; margin: 0 auto; }
 .tps__left { grid-area: side-left; background-color: #4373C8; }
 .tps__right { grid-area: side-right; background-color: #4373C8; }
-.tps__footer { grid-area: footer; background-color: rgba(44, 100, 180, 1); }
+.tps_footer {grid-area: footer; }
 .tps__header img { max-height: 100%; max-width: 100%; align-self: center;}
 
 .tps {
@@ -32,11 +32,6 @@ html, body {
 .form {
   padding-top: 40%
 }
-.form-s {
-  padding-top: 35%;
-  max-width: 435px;
-}
-
 
 form input {
   outline: 0;
@@ -114,10 +109,10 @@ form button {
                         50px
                         30px;
   }
-  .form, .form-s {
-    padding-top: 100px;
-  }
 }
 
 /***Media Queries End***/
+
+
+
 
