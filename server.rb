@@ -2,12 +2,22 @@ require "sinatra"
 require "sinatra/activerecord"
 require 'pry'
 require 'sinatra/flash'
-enable :sessions
 require_relative 'app/models/user'
 set :views, Proc.new { File.join(root, "app/views") }
 
+configure do
+  enable :sessions
+  set :session_secret, "secret"
+end
+
+VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
 get '/' do
-  erb :sign_in
+  if !logged_in?
+    erb :sign_in
+  else
+    redirect to '/dashboard'
+  end
 end
 
 get '/dashboard' do
@@ -15,13 +25,39 @@ get '/dashboard' do
 end
 
 post '/session/new' do
+
+  if VALID_EMAIL_REGEX.match(params[:username])
+    user = User.find_by(:email => params[:username])
+  else
+    user = User.find_by(:username => params[:username])
+  end
+
+  if user && user.authenticate(params[:password])
+    session[:user_id] = user.id
+    redirect '/dashboard'
+  else
+    flash[:notice] = "Login Failed."
+    redirect '/'
+  end
+end
+
+get '/logout' do
+
+  if session[:user_id] != nil
+    session.destroy
+    redirect '/'
+  else
+    redirect '/'
+  end
 end
 
 get '/user/new' do
+
   erb :new_user
 end
 
 post '/user/new' do
+
   user = User.new(
     :username => params[:username],
     :email => params[:email],
@@ -33,12 +69,21 @@ post '/user/new' do
 
   if user.save
     session[:user_id] = user.id
-    flash[:notice] = "Registration successful.  Please Sign In."
+    flash[:notice] = "Registration successful."
     redirect '/'
   else
     flash[:notice] = "Registration failed. " + user.errors.full_messages.join(". ")
     redirect '/user/new'
   end
+end
+
+
+def logged_in?
+    !!session[:user_id]
+end
+
+def current_user
+  User.find(session[:user_id])
 end
 
 

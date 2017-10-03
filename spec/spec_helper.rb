@@ -12,6 +12,18 @@ def app
   Sinatra::Application
 end
 
+def create_user
+  user = User.create(
+      :username => 'pescobar',
+      :email => 'pablo.escobar@gmail.com',
+      :first_name => 'Pablo',
+      :last_name => 'Escobar',
+      :password => 'PabloKnowsAll100!',
+      :password_confirmation => 'PabloKnowsAll100!'
+  )
+end
+
+
 #make Rack::Text available to all spec contexts
 RSpec.configure do |config|
   config.include Rack::Test::Methods
