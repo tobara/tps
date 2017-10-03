@@ -11,6 +11,7 @@ html, body {
 
 .tps__header { grid-area: header; margin: 0 auto;}
 .tps__footer { grid-area: footer; }
+.tps__flash { grid-area:flash; }
 .tps__main { grid-area: main; margin: 0 auto; }
 .tps__left { grid-area: side-left; background-color: #4373C8; }
 .tps__right { grid-area: side-right; background-color: #4373C8; }
@@ -20,10 +21,12 @@ html, body {
 .tps {
   display:grid;
   grid-template-areas: "side-left header side-right"
+                       "side-left flash side-right"
                        "side-left main side-right"
                        "side-left footer side-right";
   grid-template-columns: 150px 1fr 150px;
   grid-template-rows: 100px
+                      5px
                       1fr
                       30px;
   min-height: 100vh;
@@ -103,12 +106,14 @@ form button {
 @media screen and (max-width: 600px) {
   .tps {
     grid-template-areas: "header"
+                         "flash"
                          "side-left"
                          "main"
                          "side-right"
                          "footer";
     grid-template-columns: 100%;
     grid-template-rows: 100px
+                        10px
                         50px
                         1fr
                         50px

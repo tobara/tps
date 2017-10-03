@@ -45,5 +45,4 @@ describe('New User Sign-Up', {:type => :feature}) do
     expect(page).to have_content('Registration failed.')
     expect(page).not_to have_content('Registration successful')
   end
-
 end

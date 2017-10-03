@@ -1,6 +1,14 @@
 <header class="tps__header">
   <img src="/images/tps-logo.png" alt="tps logo">
 </header>
+<div class="tps__flash">
+  <% flash.keys.each do |type| %>
+    <div data-alert class="flash <%= type %> alert-box radius">
+        <%= flash[type] %>
+        <a href="#" class="close">&times;</a>
+    </div>
+  <% end %>
+</div>
 <main class="tps__main">
   <form class="form-s" action="/user/new" method="post">
     <input type="text" placeholder="First Name" name="first_name"/>
@@ -16,7 +24,6 @@
     <input type="password" placeholder="Password Confirmation" name="password_confirmation"/>
 
     <button type="submit">Register</button>
-
   </form>
 </main>
 <aside class="tps__left">

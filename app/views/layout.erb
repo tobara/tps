@@ -1,17 +1,13 @@
 <!doctype html>
 <html>
-  <header>
+  <head>
     <meta charset="utf8">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
-  </header>
+  </head>
   <body class="tps">
-    <% flash.keys.each do |type| %>
-      <div data-alert class="flash <%= type %> alert-box radius">
-        <%= flash[type] %>
-        <a href="#" class="close">&times;</a>
-      </div>
-    <% end %>
+
     <%= yield %>
+
   </body>
 </html>
 
