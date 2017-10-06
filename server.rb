@@ -14,7 +14,7 @@ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
 get '/' do
   if !logged_in?
-    erb :sign_in
+    erb :landing
   else
     redirect to '/dashboard'
   end
@@ -22,6 +22,10 @@ end
 
 get '/dashboard' do
   erb :dashboard
+end
+
+get '/sign-in' do
+  erb:sign_in
 end
 
 post '/session/new' do
