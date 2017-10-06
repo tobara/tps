@@ -8,7 +8,6 @@ html, body {
 }
 
 
-
 /*** MAIN LAYOUT STARTS ******************************************************************/
 
 .eds__header { grid-area: header; }
@@ -103,9 +102,9 @@ bottom-border {
 /*** LANDING STARTS ******************************************************************/
 
 .landing__image { grid-area: landing-image; text-align: left;}
-.landing__ribbon { grid-area:landing-ribbon; }
+.landing__ribbon { grid-area:landing-ribbon; position: relative; }
 .landing__text {grid-area: landing-text; }
-.landing__signin {grid-area: landing-signin;}
+.landing__signin {grid-area: landing-signin; margin: 0 auto;}
 .landing__register { grid-area:landing-register; }
 .landing__quickpay { grid-area:landing-quickpay; }
 .landing {
@@ -129,37 +128,233 @@ bottom-border {
 
 .landing__image img {max-width: 100%; max-height: 100%;}
 
+/** LANDING **ribbon start**/
 
-.landing__ribbon h1 {
-    text-align: center;
-    position: relative;
+#rib_div_1 {
+    height: 100%;
     left: -30px;
+    position: relative;
     width: 100%;
-    color: #fff;
-/*    margin: 0 -30px 30px -30px;*/
-    padding: 10px 0;
-    text-shadow: 0 1px rgba(0,0,0,.8);
-    background-color: rgba(10, 68, 149, 1);
-    background-image:  linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,0));
-/*    -moz-box-shadow: 0 2px 0 rgba(0,0,0,.3);
-    -webkit-box-shadow: 0 2px 0 rgba(0,0,0,.3);*/
-    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.5);
-}
+    perspective-origin: 169px 28.5px;
+    transform-origin: 169px 28.5px;
+    font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
+}/*#rib_div_1*/
 
-.landing__ribbon h1:before,
-.landing__ribbon h1:after {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-color: transparent;
+#rib_div_2 {
     bottom: -10px;
+    left: 0px;
+    position: absolute;
+    top: 47px;
+    perspective-origin: 5px 10px;
+    transform-origin: 5px 10px;
+    border-top: 10px solid rgba(0, 0, 0, 0);
+    border-right: 0px solid rgba(0, 0, 0, 0);
+    border-bottom: 10px solid rgba(0, 0, 0, 0);
+    border-left: 10px solid rgba(0, 0, 0, 0);
+    font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
+}/*#rib_div_2*/
+
+#rib_div_3 {
+    bottom: -10px;
+    position: absolute;
+    right: 0px;
+    top: 47px;
+    perspective-origin: 5px 10px;
+    transform-origin: 5px 10px;
+    border-top: 10px solid rgb(82, 136, 212);
+    border-right: 10px solid rgba(0, 0, 0, 0);
+    border-bottom: 10px solid rgba(0, 0, 0, 0);
+    border-left: 0px solid rgba(0, 0, 0, 0);
+    font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
+}/*#rib_div_3*/
+
+#rib_div_4 {
+    bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px 0px;
+    height: 47px;
+    left: 0px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 100%;
+    perspective-origin: 169px 23.5px;
+    transform-origin: 169px 23.5px;
+    background: rgb(10, 68, 149) none repeat scroll 0% 0% / auto padding-box border-box;
+    border: 0px solid rgb(10, 68, 149);
+    font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
+}/*#rib_div_4*/
+
+#rib_div_5 {
+    bottom: 10px;
+    height: 47px;
+    left: 0px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 100%;
+    perspective-origin: 169px 23.5px;
+    transform-origin: 169px 23.5px;
+    font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
+}/*#rib_div_5*/
+
+#rib_div_6 {
+    bottom: 12px;
+    height: 24px;
+    overflow-wrap: break-word;
+    position: absolute;
+    right: 16px;
+    top: 11px;
+    width: 90%;
+    word-wrap: break-word;
+    perspective-origin: 155px 12px;
+    transform-origin: 155px 12px;
+    font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
+}/*#rib_div_6*/
+
+#rib_h5 {
+    color: rgb(132, 130, 130);
+    height: 24px;
+    overflow-wrap: break-word;
+    text-align: center;
+    text-decoration: none solid rgb(132, 130, 130);
+    width: 90%;
+    word-wrap: break-word;
+    column-rule-color: rgb(132, 130, 130);
+    perspective-origin: 155px 12px;
+    transform-origin: 155px 12px;
+    caret-color: rgb(132, 130, 130);
+    border: 0px none rgb(132, 130, 130);
+    font: normal normal normal normal 20px / 24px "Open Sans", sans-serif;
+    margin: 0px;
+    outline: rgb(132, 130, 130) none 0px;
 }
 
-.landing__ribbon h1:after {
-    border-width: 0 0 10px 10px;
-    border-left-color: #222;
-    right: 0;
+#rib_span_1 {
+    color: rgb(132, 130, 130);
+    overflow-wrap: break-word;
+    text-align: center;
+    text-decoration: none solid rgb(132, 130, 130);
+    word-wrap: break-word;
+    column-rule-color: rgb(132, 130, 130);
+    caret-color: rgb(132, 130, 130);
+    border: 0px none rgb(132, 130, 130);
+    font: normal normal normal normal 20px / 24px "Open Sans", sans-serif;
+    outline: rgb(132, 130, 130) none 0px;
 }
+
+#rib_span_2 {
+    color: rgb(255, 255, 255);
+    overflow-wrap: break-word;
+    text-align: center;
+    text-decoration: none solid rgb(255, 255, 255);
+    word-wrap: break-word;
+    column-rule-color: rgb(255, 255, 255);
+    caret-color: rgb(255, 255, 255);
+    border: 0px none rgb(255, 255, 255);
+    font: normal normal normal normal 20px / 24px "Open Sans", sans-serif;
+    outline: rgb(255, 255, 255) none 0px;
+}
+/** ribbon end **/
+
+/** LANDING ** sign button start **/
+
+#sign_in_link {
+    background-position: 50% 0%;
+    bottom: 0px;
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 4px 0px;
+    cursor: pointer;
+    display: flex;
+    height: 55px;
+    left: 0px;
+    right: 0px;
+    text-decoration: none solid rgb(0, 0, 238);
+    top: 0px;
+    width: 305px;
+    align-items: center;
+    justify-content: center;
+    perspective-origin: 152.5px 27.5px;
+    transform-origin: 152.5px 27.5px;
+   background: rgb(44, 100, 180) url("https://static.parastorage.com/services/skins/2.1229.72/images/wysiwyg/core/themes/base/shiny2button_bg.png") repeat-x scroll 50% 0% / auto padding-box border-box;
+    border: 0px solid rgb(44, 100, 180);
+    font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
+    transition: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
+}
+
+#sign_in_span {
+    bottom: 0px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: block;
+    height: 20px;
+    left: 0px;
+    min-height: auto;
+    min-width: auto;
+    position: relative;
+    right: 0px;
+    text-decoration: none solid rgb(255, 255, 255);
+    top: 0px;
+    white-space: nowrap;
+    width: 79.8594px;
+    column-rule-color: rgb(255, 255, 255);
+    perspective-origin: 39.9219px 10px;
+    transform-origin: 39.9219px 10px;
+    caret-color: rgb(255, 255, 255);
+    border: 0px none rgb(255, 255, 255);
+    font: normal normal normal normal 16px / 20.8px "Open Sans", sans-serif;
+    outline: rgb(255, 255, 255) none 0px;
+    transition: color 0.4s ease 0s;
+}
+
+/** LANDING **Register Button Start**/
+
+#register_link {
+    background-position: 50% 0%;
+    bottom: 0px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px 0px;
+    cursor: pointer;
+    display: flex;
+    height: 55px;
+    left: 0px;
+    right: 0px;
+    text-decoration: none solid rgb(0, 0, 238);
+    top: 0px;
+    width: 305px;
+    align-items: center;
+    justify-content: center;
+    perspective-origin: 152.5px 27.5px;
+    transform-origin: 152.5px 27.5px;
+    background: rgb(10, 190, 255) url("https://static.parastorage.com/services/skins/2.1229.72/images/wysiwyg/core/themes/base/shiny2button_bg.png") repeat-x scroll 50% 0% / auto padding-box border-box;
+    border: 0px solid rgb(10, 190, 255);
+    font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
+    transition: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
+}
+
+#register_span {
+    bottom: 0px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: block;
+    height: 20px;
+    left: 0px;
+    min-height: auto;
+    min-width: auto;
+    position: relative;
+    right: 0px;
+    text-decoration: none solid rgb(255, 255, 255);
+    top: 0px;
+    white-space: nowrap;
+    width: 54.3438px;
+    column-rule-color: rgb(255, 255, 255);
+    perspective-origin: 27.1719px 10px;
+    transform-origin: 27.1719px 10px;
+    caret-color: rgb(255, 255, 255);
+    border: 0px none rgb(255, 255, 255);
+    font: normal normal normal normal 16px / 20.8px "Open Sans", sans-serif;
+    outline: rgb(255, 255, 255) none 0px;
+    transition: color 0.4s ease 0s;
+}
+
+/** Register button ends **/
 
 
 /*** LANDING ENDS ***/
