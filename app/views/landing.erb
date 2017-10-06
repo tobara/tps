@@ -17,16 +17,19 @@
 </div>
 <top-border></top-border>
 
-<main class="eds__main" id="main-form">
-  <form class="form" action="/session/new" method="post">
-      <input type="text" placeholder="Email or Username" name="username"/>
+<main class="eds__main">
 
-      <input type="text" placeholder="Password" name="password" type="password"/>
+  <div class="landing">
+    <div class="landing__image"><img src="/images/landing.png" alt="eds landing image"></div>
+      <div class="landing__ribbon"><h1>EDS TUITION PORTAL</h1></div>
 
-      <button type="submit">LOGIN</button>
 
-      <p class="message">Not registered? <a href="/user/new">Create an account</a></p>
-    </form>
+    <div class="landing__text">Tuition Portal Landing Text</div>
+    <div class="landing__signin"><a href ="/sign-in">SIGN IN BUTTON</a></div>
+    <div class="landing__register"><a href ="/user/new">REGISTER BUTTON</a></div>
+    <div class="landing__quickpay">QUICKPAY BUTTON</div>
+  </div>
+
 </main>
 
 <aside class="eds__left"></aside>
@@ -35,4 +38,3 @@
 <right-border></right-border>
 <bottom-border></bottom-border>
 <footer class="eds__footer"></footer>
-
