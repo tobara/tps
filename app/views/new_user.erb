@@ -1,15 +1,6 @@
-<header class="eds__header">
-  <img src="/images/eds-logo.png" alt="eds logo">
-</header>
-<div class="eds__flash">
-  <% flash.keys.each do |type| %>
-    <div data-alert class="flash <%= type %> alert-box radius">
-        <%= flash[type] %>
-        <a href="#" class="close">&times;</a>
-    </div>
-  <% end %>
-</div>
-<main class="eds__main">
+
+<top-border></top-border>
+<main class="eds__main" id="main-form">
   <form class="form-s" action="/user/new" method="post">
     <input type="text" placeholder="First Name" name="first_name"/>
 
@@ -26,9 +17,10 @@
     <button type="submit">Register</button>
   </form>
 </main>
-<aside class="eds__left">
-</aside>
-<aside class="eds__right">
-</aside>
+  <left-border></left-border>
+<aside class="eds__left"></aside>
+  <right-border></right-border>
+<aside class="eds__right"></aside>
+<bottom-border></bottom-border>
 <footer class="eds__footer">
 </footer>

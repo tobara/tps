@@ -46,13 +46,8 @@ post '/session/new' do
 end
 
 get '/logout' do
-
-  if session[:user_id] != nil
-    session.destroy
-    redirect '/'
-  else
-    redirect '/'
-  end
+  session.destroy if session[:user_id]
+  redirect '/'
 end
 
 get '/user/new' do

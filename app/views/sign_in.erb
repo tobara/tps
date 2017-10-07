@@ -1,24 +1,6 @@
-<header class="eds__header">
-  <div class="header-container" align="center" style="display:block">
-    <h1><span>EXETER</span></h1>
-    <img src="./images/eds-logo.png" alt="eds logo">
-    <h1><span>DAY SCHOOL</span></h1>
-    <p class="logo-title">CIRCLE OF FRIENDS</p>
-  </div>
-</header>
-<div class="eds__top-bar"></div>
-<div class="eds__flash">
-  <% flash.keys.each do |type| %>
-    <div data-alert class="flash <%= type %> alert-box radius">
-        <%= flash[type] %>
-        <a href="#" class="close">&times;</a>
-    </div>
-  <% end %>
-</div>
 <top-border></top-border>
-
 <main class="eds__main" id="main-form">
-  <form class="form" action="/session/new" method="post">
+    <form class="form" action="/session/new" method="post">
       <input type="text" placeholder="Email or Username" name="username"/>
 
       <input type="text" placeholder="Password" name="password" type="password"/>
@@ -26,13 +8,16 @@
       <button type="submit">LOGIN</button>
 
       <p class="message">Not registered? <a href="/user/new">Create an account</a></p>
-    </form>
+  </form>
 </main>
-
-<aside class="eds__left"></aside>
-<left-border></left-border>
-<aside class="eds__right"></aside>
-<right-border></right-border>
+<aside class="eds__left">
+  <left-border></left-border>
+</aside>
+<aside class="eds__right">
+  <right-border></right-border>
+</aside>
 <bottom-border></bottom-border>
-<footer class="eds__footer"></footer>
+<footer class="eds__footer">
+</footer>
+
 

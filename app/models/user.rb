@@ -4,9 +4,4 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  private
-
-  def validate_password?
-    password.present? || password_confirmation.present?
-  end
 end
