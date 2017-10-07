@@ -1,5 +1,21 @@
 
+<script src="/javascripts/landing.js" type="text/javascript"></script>
 <top-border></top-border>
+<div id="loginForm" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeForm()">&times;</a>
+  <div class="overlay-content">
+    <form action="/session/new" method="post">
+      <input type="text" placeholder="Email or Username" name="username"/>
+
+      <input type="text" placeholder="Password" name="password" type="password"/>
+
+      <button type="submit">LOGIN</button>
+
+      <p class="message">Not registered? <a href="/user/new">Create an account</a></p>
+  </form>
+  </div>
+</div>
+
 
 <main class="eds__main">
 
@@ -24,7 +40,7 @@
 
     <div class="landing__text">Tuition Portal Landing Text</div>
     <div class="landing__signin">
-      <a href="/sign-in" id="sign_in_link">
+      <a href="/sign-in" id="sign_in_link" onclick="openForm(event)">
         <span id="sign_in_span">Sign In</span>
       </a>
     </div>
