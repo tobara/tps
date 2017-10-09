@@ -7,13 +7,12 @@ Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
 describe('New User Sign-Up', {:type => :feature}) do
-  # DatabaseCleaner.clean
   it('it gets me the sign-up form') do
     visit('/')
-    click_link 'Create an account'
+    click_link 'Register'
 
     expect(page).to have_selector("input[placeholder='Password Confirmation']")
-    expect(page).not_to have_content('Create an account')
+    expect(page).not_to have_content('EDS Tuition Portal')
   end
 
   it('correctly inputs into sign-up form') do

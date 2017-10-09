@@ -11,6 +11,7 @@ gem "capybara"
 gem "rspec"
 gem 'sinatra-contrib'
 gem 'database_cleaner'
+gem 'poltergeist'
 
 
 

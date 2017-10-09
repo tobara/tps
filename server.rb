@@ -25,7 +25,7 @@ get '/dashboard' do
 end
 
 get '/sign-in' do
-  erb:sign_in
+  erb :sign_in
 end
 
 post '/session/new' do
@@ -45,13 +45,16 @@ post '/session/new' do
   end
 end
 
+get '/reset' do
+  erb :reset_password
+end
+
 get '/logout' do
   session.destroy if session[:user_id]
   redirect '/'
 end
 
 get '/user/new' do
-
   erb :new_user
 end
 
