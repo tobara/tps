@@ -6,12 +6,15 @@
   <div class="overlay-content">
 
     <div class="tab">
-      <button class="tablinks" onclick="tabForm(event, 'signIn')">Sign In</button>
-      <button class="tablinks" onclick="tabForm(event, 'signUp')">Register</button>
-      <button class="tablinks" onclick="tabForm(event, 'forgotPass')">Forgot Password?</button>
+      <button class="tablinks" name="signIn" onclick="tabForm(event, 'signIn')">Sign In</button>
+      <button class="tablinks" name="signUp" onclick="tabForm(event, 'signUp')">Register</button>
+      <button class="tablinks" name="forgotPass" onclick="tabForm(event, 'forgotPass')">Forgot Password?</button>
     </div>
 
     <div id="signIn" class="tabcontent">
+      <div class="form-title">
+        <span>EDS Tuition Portal</span>
+      </div>
       <form action="/session/new" method="post" id="form-style">
         <input type="text" placeholder="Email or Username" name="username"/>
 
@@ -22,6 +25,9 @@
     </div>
 
     <div id="signUp" class="tabcontent">
+      <div class="form-title">
+        <span>EDS Tuition Portal</span>
+      </div>
       <form class="form-s" action="/user/new" method="post">
 
         <input type="text" placeholder="First Name" name="first_name"/>
@@ -42,6 +48,9 @@
     </div>
 
     <div id="forgotPass" class="tabcontent">
+      <div class="form-title">
+        <span>EDS Tuition Portal</span>
+      </div>
       <form action="/reset" method="post" id="form-style">
         <input type="text" placeholder="Email" name="email"/>
         <button type="submit">RESET PASSWORD</button>

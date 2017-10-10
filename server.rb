@@ -1,6 +1,5 @@
 require "sinatra"
 require "sinatra/activerecord"
-require 'pry'
 require 'sinatra/flash'
 require_relative 'app/models/user'
 set :views, Proc.new { File.join(root, "app/views") }
@@ -29,7 +28,6 @@ get '/sign-in' do
 end
 
 post '/session/new' do
-
   if VALID_EMAIL_REGEX.match(params[:username])
     user = User.find_by(:email => params[:username])
   else

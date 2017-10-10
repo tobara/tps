@@ -3,19 +3,11 @@ require 'test/unit'
 require 'rack/test'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'pry'
 
 Capybara.javascript_driver = :poltergeist
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
-
-user = User.create(
-      :username => 'pescobar11',
-      :email => 'pablo11.escobar@gmail.com',
-      :first_name => 'Pablo',
-      :last_name => 'Escobar',
-      :password => 'PabloKnowsAll100!',
-      :password_confirmation => 'PabloKnowsAll100!'
-  )
 
 
 feature 'user can access all user forms', %{
@@ -28,7 +20,6 @@ feature 'user can access all user forms', %{
     visit "/"
 
     click_link "Sign In"
-
 
     expect(page).to have_content ("Forgot Password?")
     expect(page).to_not have_content("Not registered? Create an account")
@@ -43,7 +34,7 @@ feature 'user can access all user forms', %{
     expect(current_path).to_not have_content('/user/new')
   end
 
-   scenario "user can view reset password overlay form", js: true do
+  scenario "user can view reset password overlay form", js: true do
     visit "/"
 
     click_link "Reset your password"

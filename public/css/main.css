@@ -408,8 +408,9 @@ bottom-border {
 /* Style the tab */
 div.tab {
     overflow: hidden;
-    border: 1px solid #ccc;
+    border: 1px solid #0A4495;
     background-color: #0A4495;
+
 }
 
 /* Style the buttons inside the tab */
@@ -421,27 +422,36 @@ div.tab button {
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
+    font: normal normal normal normal 16px / 20px "Open Sans", sans-serif;
+    color: #fff;
 }
 
 /* Change background color of buttons on hover */
 div.tab button:hover {
-    background-color: #ddd;
+    background-color: #5288D3;
 }
 
 /* Create an active/current tablink class */
 div.tab button.active {
-    background-color: #5288D3
+    background-color: #5288D3;
 }
 
 /* Style the tab content */
 .tabcontent {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #0A4495;
     border-top: none;
+    min-height: 500px;
+    background-color: rgba(44, 100, 180, .6);
+
 }
 
+.form-title {
+  font: normal normal normal normal 24px / 28px "Open Sans", sans-serif;
+  color:#fff;
 
+}
 /**Login Overlay Ends**/
 
 /*** LANDING ENDS ***/
@@ -453,8 +463,8 @@ div.tab button.active {
 
 /*** FORMS START ******************************************************************/
 
-#main-form {
-  margin: 0 auto;
+form {
+  padding-top: 50%
 }
 
 .form {
@@ -479,7 +489,7 @@ form input {
 form button {
   text-transform: uppercase;
   outline: 0;
-  background: rgba(44, 100, 180, 1);
+  background: #0A4495;
   width: 100%;
   border: 0;
   padding: 15px;
