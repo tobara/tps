@@ -104,7 +104,7 @@ bottom-border {
 .landing__image { grid-area: landing-image; text-align: left;}
 .landing__ribbon { grid-area:landing-ribbon; position: relative; }
 .landing__text {grid-area: landing-text; }
-.landing__signin {grid-area: landing-signin; margin: 0 auto;}
+.landing__signin {grid-area: landing-signin; }
 .landing__register { grid-area:landing-register; }
 .landing__quickpay { grid-area:landing-quickpay; }
 .landing {
