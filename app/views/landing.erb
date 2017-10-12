@@ -59,11 +59,14 @@
   </div>
 </div>
 
-<top-border></top-border>
-<main class="eds__main">
 
-  <div class="landing">
+
+<main class="eds__main">
+  <left-border class="left__border"></left-border>
+  <top-border class="top__border"></top-border>
+  <div class="content__space">
     <div class="landing__image"><img src="/images/landing.png" alt="eds landing image"></div>
+    <div class="landing__right">
       <div class="landing__ribbon">
         <div id="rib_div_1">
           <div id="rib_div_2"></div>
@@ -80,28 +83,32 @@
           </div>
         </div>
       </div>
+      <div class="landing__text">Exeter Day School provides a convenient online payment platform where you can check you current tuition balance, make a payment free of charge with bank transfers.  Also you can schedule upcoming payments or make a quick payment without registering.</div>
+      <div class="landing__signin">
+        <a href="/sign-in" id="sign_in_link" onclick="openForms(event)" name="signIn">
+          <span id="sign_in_span">Sign In</span>
+        </a>
+      </div>
 
-    <div class="landing__text">Tuition Portal Landing Text</div>
-    <div class="landing__signin">
-      <a href="/sign-in" id="sign_in_link" onclick="openForms(event)" name="signIn">
-        <span id="sign_in_span">Sign In</span>
-      </a>
-    </div>
-
-    <div class="landing__register">
-      <a href="/user/new" id="register_link" onclick="openForms(event)" name="signUp">
+      <div class="landing__register">
+        <a href="/user/new" id="register_link" onclick="openForms(event)" name="signUp">
         <span id="register_span" name="signUp">Register</span>
-      </a>
-      <p class="message">Forgot your Password? <a href="/reset" onclick="openForms(event)" name="forgotPass">Reset your password</a></p>
-    </div>
-    <div class="landing__quickpay">QUICKPAY BUTTON</div>
-  </div>
+        </a>
+        <p class="message">Forgot your Password? <a href="/reset" onclick="openForms(event)" name="forgotPass">Reset your password</a></p>
+      </div>
 
+      <div class="landing__quickpay">
+        <a href="/quickpay" id="quickpay_link">
+          <span id="quickpay_span">QuickPay</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <right-border class="right__border"></right-border>
+  <bottom-border class="bottom__border"></bottom-border>
 </main>
 
 <aside class="eds__left"></aside>
-<left-border></left-border>
 <aside class="eds__right"></aside>
-<right-border></right-border>
-<bottom-border></bottom-border>
+
 <footer class="eds__footer"></footer>

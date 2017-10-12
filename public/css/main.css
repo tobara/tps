@@ -1,3 +1,4 @@
+
 html, body {
   width: 100%;
   height:100%;
@@ -12,12 +13,40 @@ html, body {
 
 .eds__header { grid-area: header; }
 .eds__footer { grid-area: footer; }
-.eds__top-bar { grid-area: top-bar; background-color: rgba(44, 100, 180, 1); margin-bottom:20px;}
-.eds__flash { grid-area:flash; }
-.eds__main { grid-area: main; }
+.eds__top-bar { grid-area: top-bar; background-color: rgba(44, 100, 180, 1);}
+.eds__main {
+  grid-area: main;
+  display: grid;
+  height:100%;
+  grid-template-areas: "left-border top-border right-border"
+                       "left-border content-space right-border"
+                       "left-border bottom-border right-border";
+  grid-template-columns: 20px auto 20px;
+  grid-template-rows: 20px auto 20px;
+}
+
+.left__border {grid-area: left-border;}
+.top__border {grid-area: top-border;}
+.right__border {grid-area: right-border;}
+.content__space {
+  margin: 20px;
+  grid-area: content-space;
+  display:grid;
+  height:100%;
+  grid-template-areas: "landing-image landing-right"
+                       "landing-image landing-right"
+                       "landing-image landing-right"
+                       "landing-image landing-right"
+                       "landing-image landing-right";
+  grid-template-columns: auto 40%;
+  grid-template-rows:100%;
+}
+.landing__right {grid-area: landing-right;}
+
+.bottom__border {grid-area: bottom-border;}
 .eds__left { grid-area: side-left; background-color: #5288D3; }
 .eds__right { grid-area: side-right; background-color: #5288D3; }
-.eds__footer { grid-area: footer; background-color: rgba(44, 100, 180, 1); margin-top: 20px; }
+.eds__footer { grid-area: footer; background-color: rgba(44, 100, 180, 1); }
 .eds__header img { width: 118px; height: 91px; vertical-align: middle; display:inline-block;}
 
 
@@ -25,54 +54,46 @@ html, body {
   display:grid;
   grid-template-areas: "side-left header side-right"
                        "side-left top-bar side-right"
-                       "side-left flash side-right"
                        "side-left main side-right"
                        "side-left footer side-right";
   grid-template-columns: 220px 1fr 220px;
   grid-template-rows: 193px
                       50px
-                      5px
                       1fr
                       30px;
   min-height: 100vh;
 }
 
-top-border {
-  grid-column:2;
-  grid-row:2;
-  border-bottom:20px solid #C3D5F0;
+.top__border {
+  grid-area: top-border;
+  background-color: #C3D5F0;
 }
-right-border {
-    grid-column: 2 / 3;
-    grid-row: 3 / 5;
-    border-right: 20px solid #C3D5F0;
+.right__border {
+  grid-area: right-border;
+  background-color: #C3D5F0;
 }
-left-border {
-  grid-column: 2 / 2;
-  grid-row: 3 / 5;
-  border-left: 20px solid #C3D5F0;
+.left__border {
+  grid-area: left-border;
+  background-color: #C3D5F0;
 }
-bottom-border {
-    grid-column: 2;
-    grid-row: 5;
-    border-top: 20px solid #C3D5F0
+.bottom__border {
+  grid-area: bottom-border;
+  background-color: #C3D5F0;
 }
 
 .header-container {
-  padding-top: 50px;
+/*  padding-top: 50px;
   position: relative;
   max-width: 1200px;
+  margin: 0 auto;*/
+}
+header {
   margin: 0 auto;
 }
 .logo-title {
-    width: 100%;
-    float: none;
-    box-sizing: border-box;
-    text-align: center;
-    position: absolute;
-    margin-left: -55px;
+    margin-left: -110px;
 }
-/*.eds__header img { max-width: 100%; max-height: 100%; display:inline-block; }*/
+
 .eds__header h1:first-of-type { text-align: center; display:inline-block;}
 .eds__header h1:last-of-type { text-align: center; display:inline-block;}
 
@@ -96,15 +117,109 @@ bottom-border {
 
 /*** MAIN LAYOUT ENDS ***/
 
+.overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.6);
+    overflow-y: hidden;
+    transition: 0.5s;
+}
 
+.overlay-content {
+    position: relative;
+    width: 25%;
+    text-align: center;
+    margin-top: 30px;
+    padding-top:10%;
+    margin: 0 auto;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+#form-overlay-box {
+  background-color: #0A4495;
+  border: 5px solid #0A4495;
+}
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #0A4495;
+    background-color: #0A4495;
+
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font: normal normal normal normal 16px / 20px "Open Sans", sans-serif;
+    color: #fff;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #5288D3;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #5288D3;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #0A4495;
+    border-top: none;
+    min-height: 500px;
+    background-color: rgba(44, 100, 180, .6);
+
+}
+
+.form-title {
+  font: normal normal normal normal 24px / 28px "Open Sans", sans-serif;
+  color:#fff;
+
+}
+/**Login Overlay Ends**/
 
 
 /*** LANDING STARTS ******************************************************************/
 
-.landing__image { grid-area: landing-image; text-align: left;}
+/*.landing__image { grid-area: landing-image; text-align: left;}
 .landing__ribbon { grid-area:landing-ribbon; position: relative; }
 .landing__text {grid-area: landing-text; }
-.landing__signin {grid-area: landing-signin; }
+.landing__signin {grid-area: landing-signin; margin: 0 auto;}
 .landing__register { grid-area:landing-register; }
 .landing__quickpay { grid-area:landing-quickpay; }
 .landing {
@@ -124,13 +239,35 @@ bottom-border {
                       2fr;
   grid-row-gap: 20px;
   grid-column-gap: 20px;
-}
+}*/
 
 .landing__image img {max-width: 100%; max-height: 100%;}
+.landing__text {
+    margin-left: 65px;
+    margin-top: 75px;
+ }
 
-/** LANDING **ribbon start**/
+.landing__signin {
+  margin-left: 55px;
+  margin-top: 20px;
+
+}
+
+.landing__register {
+  margin-left: 55px;
+  margin-top: 20px;
+}
+
+.landing__quickpay {
+  margin-left: 55px;
+  margin-top: 20px;
+}
+/** LANDING **Ribbon**/
+
+
 
 #rib_div_1 {
+    margin-left: 60px;
     height: 100%;
     left: -30px;
     position: relative;
@@ -254,9 +391,7 @@ bottom-border {
     font: normal normal normal normal 20px / 24px "Open Sans", sans-serif;
     outline: rgb(255, 255, 255) none 0px;
 }
-/** ribbon end **/
-
-/** LANDING ** sign button start **/
+  /**Ribbon End**/
 
 #sign_in_link {
     background-position: 50% 0%;
@@ -269,7 +404,8 @@ bottom-border {
     right: 0px;
     text-decoration: none solid rgb(0, 0, 238);
     top: 0px;
-    width: 305px;
+    width: 100%;
+    float:left;
     align-items: center;
     justify-content: center;
     perspective-origin: 152.5px 27.5px;
@@ -294,7 +430,6 @@ bottom-border {
     text-decoration: none solid rgb(255, 255, 255);
     top: 0px;
     white-space: nowrap;
-    width: 79.8594px;
     column-rule-color: rgb(255, 255, 255);
     perspective-origin: 39.9219px 10px;
     transform-origin: 39.9219px 10px;
@@ -308,6 +443,8 @@ bottom-border {
 /** LANDING **Register Button Start**/
 
 #register_link {
+    margin-top: 20px;
+    float:left;
     background-position: 50% 0%;
     bottom: 0px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px 0px;
@@ -318,7 +455,7 @@ bottom-border {
     right: 0px;
     text-decoration: none solid rgb(0, 0, 238);
     top: 0px;
-    width: 305px;
+    width: 100%;
     align-items: center;
     justify-content: center;
     perspective-origin: 152.5px 27.5px;
@@ -343,7 +480,6 @@ bottom-border {
     text-decoration: none solid rgb(255, 255, 255);
     top: 0px;
     white-space: nowrap;
-    width: 54.3438px;
     column-rule-color: rgb(255, 255, 255);
     perspective-origin: 27.1719px 10px;
     transform-origin: 27.1719px 10px;
@@ -355,104 +491,56 @@ bottom-border {
 }
 
 /** Register button ends **/
+/** Quick Pay Button Start **/
 
-
-/**LANDING **Login Overlay Starts**/
-.overlay {
-    height: 0%;
-    width: 100%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.6);
-    overflow-y: hidden;
-    transition: 0.5s;
-}
-
-.overlay-content {
-    position: relative;
-    width: 25%;
-    text-align: center;
-    margin-top: 30px;
-    padding-top:10%;
-    margin: 0 auto;
-}
-
-.overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 36px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.overlay a:hover, .overlay a:focus {
-    color: #f1f1f1;
-}
-
-.overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-}
-
-#form-overlay-box {
-  background-color: #0A4495;
-  border: 5px solid #0A4495;
-}
-
-/* Style the tab */
-div.tab {
-    overflow: hidden;
-    border: 1px solid #0A4495;
-    background-color: #0A4495;
-
-}
-
-/* Style the buttons inside the tab */
-div.tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
+#quickpay_link {
+    margin-top: 50px;
+    background-position: 50% 0%;
+    bottom: 0px;
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 4px 0px;
     cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font: normal normal normal normal 16px / 20px "Open Sans", sans-serif;
-    color: #fff;
+    display: flex;
+    height: 55px;
+    left: 0px;
+    right: 0px;
+    text-decoration: none solid rgb(0, 0, 238);
+    top: 0px;
+    width: 100%;
+    float:left;
+    align-items: center;
+    justify-content: center;
+    perspective-origin: 152.5px 27.5px;
+    transform-origin: 152.5px 27.5px;
+   background: rgb(44, 100, 180) url("https://static.parastorage.com/services/skins/2.1229.72/images/wysiwyg/core/themes/base/shiny2button_bg.png") repeat-x scroll 50% 0% / auto padding-box border-box;
+    border: 0px solid rgb(44, 100, 180);
+    font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
+    transition: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
 }
 
-/* Change background color of buttons on hover */
-div.tab button:hover {
-    background-color: #5288D3;
+#quickpay_span {
+    bottom: 0px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: block;
+    height: 20px;
+    left: 0px;
+    min-height: auto;
+    min-width: auto;
+    position: relative;
+    right: 0px;
+    text-decoration: none solid rgb(255, 255, 255);
+    top: 0px;
+    white-space: nowrap;
+    column-rule-color: rgb(255, 255, 255);
+    perspective-origin: 39.9219px 10px;
+    transform-origin: 39.9219px 10px;
+    caret-color: rgb(255, 255, 255);
+    border: 0px none rgb(255, 255, 255);
+    font: normal normal normal normal 16px / 20.8px "Open Sans", sans-serif;
+    outline: rgb(255, 255, 255) none 0px;
+    transition: color 0.4s ease 0s;
 }
 
-/* Create an active/current tablink class */
-div.tab button.active {
-    background-color: #5288D3;
-}
-
-/* Style the tab content */
-.tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #0A4495;
-    border-top: none;
-    min-height: 500px;
-    background-color: rgba(44, 100, 180, .6);
-
-}
-
-.form-title {
-  font: normal normal normal normal 24px / 28px "Open Sans", sans-serif;
-  color:#fff;
-
-}
-/**Login Overlay Ends**/
 
 /*** LANDING ENDS ***/
 
@@ -463,8 +551,8 @@ div.tab button.active {
 
 /*** FORMS START ******************************************************************/
 
-form {
-  padding-top: 50%
+#main-form {
+  margin: 0 auto;
 }
 
 .form {
@@ -489,7 +577,7 @@ form input {
 form button {
   text-transform: uppercase;
   outline: 0;
-  background: #0A4495;
+  background: rgba(44, 100, 180, 1);
   width: 100%;
   border: 0;
   padding: 15px;
@@ -542,7 +630,6 @@ form button {
   .eds {
     grid-template-areas: "header"
                          "top-bar"
-                         "flash"
                          "side-left"
                          "main"
                          "side-right"
@@ -556,19 +643,11 @@ form button {
                         50px
                         30px;
   }
-
-@media screen and (max-height: 450px) {
-  .overlay {overflow-y: auto;}
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
-  }
-}
-
   .form, .form-s {
     padding-top: 100px;
+  }
+  .logo-title {
+    -webkit-margin-before: 0em;
   }
 }
 
