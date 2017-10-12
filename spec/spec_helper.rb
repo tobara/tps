@@ -4,6 +4,7 @@ require 'sinatra'
 require 'rack/test'
 require 'capybara'
 require 'database_cleaner'
+require 'pry'
 
 set :environment, :test
 
@@ -29,13 +30,23 @@ RSpec.configure do |config|
   config.include Rack::Test::Methods
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
   end
+
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
 end

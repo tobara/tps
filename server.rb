@@ -1,6 +1,5 @@
 require "sinatra"
 require "sinatra/activerecord"
-require 'pry'
 require 'sinatra/flash'
 require_relative 'app/models/user'
 set :views, Proc.new { File.join(root, "app/views") }
@@ -25,11 +24,10 @@ get '/dashboard' do
 end
 
 get '/sign-in' do
-  erb:sign_in
+  erb :sign_in
 end
 
 post '/session/new' do
-
   if VALID_EMAIL_REGEX.match(params[:username])
     user = User.find_by(:email => params[:username])
   else
@@ -45,13 +43,16 @@ post '/session/new' do
   end
 end
 
+get '/reset' do
+  erb :reset_password
+end
+
 get '/logout' do
   session.destroy if session[:user_id]
   redirect '/'
 end
 
 get '/user/new' do
-
   erb :new_user
 end
 
