@@ -9,46 +9,15 @@ html, body {
 }
 
 
-/*** MAIN LAYOUT STARTS ******************************************************************/
+/*** GRIDS START ******************************************************************/
 
-.eds__header { grid-area: header; }
-.eds__footer { grid-area: footer; }
-.eds__top-bar { grid-area: top-bar; background-color: rgba(44, 100, 180, 1);}
-.eds__main {
-  grid-area: main;
-  display: grid;
-  height:100%;
-  grid-template-areas: "left-border top-border right-border"
-                       "left-border content-space right-border"
-                       "left-border bottom-border right-border";
-  grid-template-columns: 20px auto 20px;
-  grid-template-rows: 20px auto 20px;
-}
-
-.left__border {grid-area: left-border;}
-.top__border {grid-area: top-border;}
-.right__border {grid-area: right-border;}
-.content__space {
-  margin: 20px;
-  grid-area: content-space;
-  display:grid;
-  height:100%;
-  grid-template-areas: "landing-image landing-right"
-                       "landing-image landing-right"
-                       "landing-image landing-right"
-                       "landing-image landing-right"
-                       "landing-image landing-right";
-  grid-template-columns: auto 40%;
-  grid-template-rows:100%;
-}
-.landing__right {grid-area: landing-right;}
-
-.bottom__border {grid-area: bottom-border;}
+/*** body class="eds" ----> GRID: ***/
 .eds__left { grid-area: side-left; background-color: #5288D3; }
+.eds__header { grid-area: header; }
 .eds__right { grid-area: side-right; background-color: #5288D3; }
-.eds__footer { grid-area: footer; background-color: rgba(44, 100, 180, 1); }
-.eds__header img { width: 118px; height: 91px; vertical-align: middle; display:inline-block;}
-
+.eds__top-bar { grid-area: top-bar; background-color: rgba(44, 100, 180, 1);}
+.eds__main { grid-area: main; }
+.eds__footer { grid-area: footer; background-color: rgba(44, 100, 180, 1); vertical-align: bottom; }
 
 .eds {
   display:grid;
@@ -64,29 +33,62 @@ html, body {
   min-height: 100vh;
 }
 
-.top__border {
-  grid-area: top-border;
-  background-color: #C3D5F0;
-}
-.right__border {
-  grid-area: right-border;
-  background-color: #C3D5F0;
-}
-.left__border {
-  grid-area: left-border;
-  background-color: #C3D5F0;
-}
-.bottom__border {
-  grid-area: bottom-border;
-  background-color: #C3D5F0;
+
+
+/*** main class="eds" ----> GRID: ***/
+.left__border { grid-area: left-border; background-color: #C3D5F0; }
+.top__border { grid-area: top-border; background-color: #C3D5F0; }
+.right__border { grid-area: right-border; background-color: #C3D5F0; }
+.content__space{ grid-area: content-space; }
+.bottom__border {grid-area: bottom-border; background-color: #C3D5F0; }
+
+.eds__main {
+  grid-area: main;
+  display: grid;
+  height:100%;
+  grid-template-areas: "left-border top-border right-border"
+                       "left-border content-space right-border"
+                       "left-border bottom-border right-border";
+  grid-template-columns: 20px auto 20px;
+  grid-template-rows: 20px auto 20px;
 }
 
-.header-container {
-/*  padding-top: 50px;
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;*/
+
+/*** div class="content__space" ----> GRID: ***/
+.landing__right { grid-area: landing-right; }
+.landing__image { grid-area: landing-image; }
+.landing__image img { max-width: 100%; max-height: 100%; }
+.content__space {
+  margin: 20px;
+  display:grid;
+  height:100%;
+  grid-template-areas: "landing-image landing-right"
+                       "landing-image landing-right"
+                       "landing-image landing-right"
+                       "landing-image landing-right"
+                       "landing-image landing-right";
+  grid-template-columns: auto 40%;
+  grid-template-rows:100%;
 }
+
+
+/**************GRID ENDS**************************************/
+
+
+
+
+/*** HEADER ***/
+
+.header-container {
+}
+
+.eds__header img {
+  width: 118px;
+  height: 91px;
+  vertical-align: middle;
+  display:inline-block;
+}
+
 header {
   margin: 0 auto;
 }
@@ -109,13 +111,16 @@ header {
 
 }
 
-
 .eds__header p {
   font-family: "Times New Roman", times, serif;
   font-size: 14px;
 }
 
-/*** MAIN LAYOUT ENDS ***/
+/*** HEADER ENDS ******************************************/
+
+
+/*LANDING* *Overlay Starts */
+
 
 .overlay {
     height: 0%;
@@ -164,7 +169,6 @@ header {
   border: 5px solid #0A4495;
 }
 
-/* Style the tab */
 div.tab {
     overflow: hidden;
     border: 1px solid #0A4495;
@@ -172,7 +176,6 @@ div.tab {
 
 }
 
-/* Style the buttons inside the tab */
 div.tab button {
     background-color: inherit;
     float: left;
@@ -185,17 +188,14 @@ div.tab button {
     color: #fff;
 }
 
-/* Change background color of buttons on hover */
 div.tab button:hover {
     background-color: #5288D3;
 }
 
-/* Create an active/current tablink class */
 div.tab button.active {
     background-color: #5288D3;
 }
 
-/* Style the tab content */
 .tabcontent {
     display: none;
     padding: 6px 12px;
@@ -211,37 +211,12 @@ div.tab button.active {
   color:#fff;
 
 }
-/**Login Overlay Ends**/
+
+/*LANDING* Content Space Starts */
 
 
-/*** LANDING STARTS ******************************************************************/
 
-/*.landing__image { grid-area: landing-image; text-align: left;}
-.landing__ribbon { grid-area:landing-ribbon; position: relative; }
-.landing__text {grid-area: landing-text; }
-.landing__signin {grid-area: landing-signin; margin: 0 auto;}
-.landing__register { grid-area:landing-register; }
-.landing__quickpay { grid-area:landing-quickpay; }
-.landing {
-  height:100%;
-  width:100%;
-  display:grid;
-  grid-template-areas: "landing-image landing-ribbon"
-                       "landing-image landing-text"
-                       "landing-image landing-signin"
-                       "landing-image landing-register"
-                       "landing-image landing-quickpay";
-  grid-template-columns: 67% 33%;
-  grid-template-rows: 1fr
-                      2fr
-                      1fr
-                      1fr
-                      2fr;
-  grid-row-gap: 20px;
-  grid-column-gap: 20px;
-}*/
 
-.landing__image img {max-width: 100%; max-height: 100%;}
 .landing__text {
     margin-left: 65px;
     margin-top: 75px;
@@ -262,9 +237,9 @@ div.tab button.active {
   margin-left: 55px;
   margin-top: 20px;
 }
-/** LANDING **Ribbon**/
 
 
+/*LANDING* *Content Space* Ribbon Starts**/
 
 #rib_div_1 {
     margin-left: 60px;
@@ -275,7 +250,7 @@ div.tab button.active {
     perspective-origin: 169px 28.5px;
     transform-origin: 169px 28.5px;
     font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
-}/*#rib_div_1*/
+}
 
 #rib_div_2 {
     bottom: -10px;
@@ -289,7 +264,7 @@ div.tab button.active {
     border-bottom: 10px solid rgba(0, 0, 0, 0);
     border-left: 10px solid rgba(0, 0, 0, 0);
     font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
-}/*#rib_div_2*/
+}
 
 #rib_div_3 {
     bottom: -10px;
@@ -303,7 +278,7 @@ div.tab button.active {
     border-bottom: 10px solid rgba(0, 0, 0, 0);
     border-left: 0px solid rgba(0, 0, 0, 0);
     font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
-}/*#rib_div_3*/
+}
 
 #rib_div_4 {
     bottom: 10px;
@@ -319,7 +294,7 @@ div.tab button.active {
     background: rgb(10, 68, 149) none repeat scroll 0% 0% / auto padding-box border-box;
     border: 0px solid rgb(10, 68, 149);
     font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
-}/*#rib_div_4*/
+}
 
 #rib_div_5 {
     bottom: 10px;
@@ -332,7 +307,7 @@ div.tab button.active {
     perspective-origin: 169px 23.5px;
     transform-origin: 169px 23.5px;
     font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
-}/*#rib_div_5*/
+}
 
 #rib_div_6 {
     bottom: 12px;
@@ -346,7 +321,7 @@ div.tab button.active {
     perspective-origin: 155px 12px;
     transform-origin: 155px 12px;
     font: normal normal normal normal 10px / normal Arial, Helvetica, sans-serif;
-}/*#rib_div_6*/
+}
 
 #rib_h5 {
     color: rgb(132, 130, 130);
@@ -354,7 +329,7 @@ div.tab button.active {
     overflow-wrap: break-word;
     text-align: center;
     text-decoration: none solid rgb(132, 130, 130);
-    width: 90%;
+    width: 100%;
     word-wrap: break-word;
     column-rule-color: rgb(132, 130, 130);
     perspective-origin: 155px 12px;
@@ -391,7 +366,8 @@ div.tab button.active {
     font: normal normal normal normal 20px / 24px "Open Sans", sans-serif;
     outline: rgb(255, 255, 255) none 0px;
 }
-  /**Ribbon End**/
+
+/*LANDING* *Content Space* Buttons Starts**/
 
 #sign_in_link {
     background-position: 50% 0%;
@@ -440,8 +416,6 @@ div.tab button.active {
     transition: color 0.4s ease 0s;
 }
 
-/** LANDING **Register Button Start**/
-
 #register_link {
     margin-top: 20px;
     float:left;
@@ -489,9 +463,6 @@ div.tab button.active {
     outline: rgb(255, 255, 255) none 0px;
     transition: color 0.4s ease 0s;
 }
-
-/** Register button ends **/
-/** Quick Pay Button Start **/
 
 #quickpay_link {
     margin-top: 50px;
@@ -542,14 +513,10 @@ div.tab button.active {
 }
 
 
-/*** LANDING ENDS ***/
+/*** LANDING ENDS **************************************************/
 
 
-
-
-
-
-/*** FORMS START ******************************************************************/
+/*** FORMS START ***/
 
 #main-form {
   margin: 0 auto;
@@ -598,10 +565,10 @@ form button {
   text-decoration: none;
 }
 
-/*** FORMS END ***/
+/*** FORMS END *****************************************/
 
 
-/*** FLASH STARTS ******************************************************************/
+/*** FLASH STARTS **/
 
 .alert-box {
     color:#FFFFFF;
@@ -617,39 +584,113 @@ form button {
     text-transform:uppercase;
 }
 
-/*** FLASH ENDS ***/
+/*** FLASH ENDS ***************************************/
 
 
 
 
 
-/*** MEDIA QUERIES STARTS ******************************************************************/
+/*** MEDIA QUERIES START ***/
 
+
+@media screen and (min-width : 600px) and (max-width : 1024px) {
+ .eds {
+    display:grid;
+    grid-template-areas: "header"
+                         "top-bar"
+                         "main";
+
+    grid-template-columns: 100%;
+    grid-template-rows: 193px
+                        50px
+                        1fr;
+
+  }
+
+  .overlay-content {
+    width:75%;
+  }
+}
 
 @media screen and (max-width: 600px) {
   .eds {
+    display:grid;
     grid-template-areas: "header"
                          "top-bar"
-                         "side-left"
-                         "main"
-                         "side-right"
-                         "footer";
+                         "main";
+
     grid-template-columns: 100%;
-    grid-template-rows: 100px
-                        10px
-                        10px
+    grid-template-rows: 193px
                         50px
-                        1fr
-                        50px
-                        30px;
+                        1fr;
+
   }
+
+  .eds__main {
+    grid-area: main;
+    display: grid;
+    height:100%;
+    grid-template-areas: "content-space";
+
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+  }
+
+  .content__space {
+    margin: 20px;
+    grid-area: content-space;
+    display:grid;
+    grid-template-areas: "landing-image"
+                         "landing-right"
+                         "landing-right"
+                         "landing-right"
+                         "landing-right";
+    grid-template-columns: 100%;
+    grid-template-rows: 100%
+                        auto
+                        auto
+                        auto
+                        auto;
+    min-height:100vh;
+  }
+
+  .landing__ribbon, .landing__text, .landing__signin, .landing__register,
+  .landing__quickpay {
+    margin-left: 0px;
+  }
+
+  .landing__right {
+    margin-top:-50vh;
+    vertical-align: top;
+  }
+  .landing__ribbon {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+  #rib_div_4, #rib_div_3 {
+    border-top:none;
+  }
+
+  #rib_div_1 {
+    margin-left: 0px;
+    left: 0px;
+  }
+
   .form, .form-s {
     padding-top: 100px;
   }
   .logo-title {
     -webkit-margin-before: 0em;
   }
+  .overlay-content {
+    width:75%;
+  }
+  .overlay .closebtn {
+    right: 30px;
+    top: 0px;
+  }
+
 }
 
-/*** MEDIA QUERIES ENDS ***/
+/*** MEDIA QUERIES END *********************************/
 
