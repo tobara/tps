@@ -22,7 +22,7 @@ configure do
    :password => "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",
    :enable_starttls_auto => true
   }
-  ActionMailer::Base.view_paths = File.expand_path('../../../app/views/', __FILE__)
+  ActionMailer::Base.view_paths = File.expand_path('../../tps/app/views/user_mailer', __FILE__)
 end
 
 
@@ -52,8 +52,13 @@ post '/session/new' do
   end
 
   if user && user.authenticate(params[:password])
-    session[:user_id] = user.id
-    redirect '/dashboard'
+    if user.email_confirmed == true
+      session[:user_id] = user.id
+      redirect '/dashboard'
+    else
+      flash[:notice] = "Please confirm your email."
+      redirect '/'
+    end
   else
     flash[:notice] = "Login Failed."
     redirect '/'
@@ -85,8 +90,11 @@ post '/user/new' do
   )
 
   if user.save
-    session[:user_id] = user.id
     flash[:notice] = "Registration successful."
+    user.set_confirmation_token
+    user.save(validate: false)
+    UserMailer.registration_confirmation(user).deliver_now
+    flash[:success] = "Please confirm your email address to continue"
     redirect '/'
   else
     flash[:notice] = "Registration failed. " + user.errors.full_messages.join(". ")
@@ -94,6 +102,9 @@ post '/user/new' do
   end
 end
 
+get '/:token/confirm_email/' do
+  confirm_email
+end
 
 def logged_in?
     !!session[:user_id]
@@ -103,5 +114,17 @@ def current_user
   User.find(session[:user_id])
 end
 
+def confirm_email
+  user = User.find_by_confirm_token(params[:token])
+  if user != nil
+    user.validate_email
+    user.save(validate: false)
+    flash[:notice] = "Confirmed.  Please Sign In."
+    redirect '/'
+  else
+    flash[:notice] = "Sorry. User does not exist"
+    redirect_to '/'
+  end
+end
 
 
