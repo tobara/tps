@@ -1,13 +1,30 @@
 require "sinatra"
 require "sinatra/activerecord"
 require 'sinatra/flash'
+require 'action_mailer'
 require_relative 'app/models/user'
+require_relative 'app/mailers/user_mailer'
+require_relative 'app/mailers/application_mailer'
 set :views, Proc.new { File.join(root, "app/views") }
+
 
 configure do
   enable :sessions
   set :session_secret, "secret"
+  ActionMailer::Base.raise_delivery_errors = true
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+   :address => 'smtp.sendgrid.net',
+   :port           => 587,
+   :domain         => "example.com",
+   :authentication => :plain,
+   :user_name => "apikey",
+   :password => "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",
+   :enable_starttls_auto => true
+  }
+  ActionMailer::Base.view_paths = File.expand_path('../../../app/views/', __FILE__)
 end
+
 
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 

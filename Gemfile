@@ -4,6 +4,7 @@ gem "sinatra"
 gem "sinatra-activerecord"
 gem 'pg'
 gem 'sinatra-flash'
+gem 'actionmailer'
 
 gem 'pry'
 gem 'shotgun'  #Autoreloader: $shotgun server.rb
