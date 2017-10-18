@@ -9,7 +9,8 @@ set(:show_exceptions, false)
 describe('User can login', {:type => :feature}) do
 
   it('logs me in with valid username and password') do
-    user = create_user
+    user = create_confirmed_user
+
     visit('/')
     click_link 'Sign In'
 
@@ -23,7 +24,8 @@ describe('User can login', {:type => :feature}) do
   end
 
   it('logs me in with valid email and password') do
-    user = create_user
+    user = create_confirmed_user
+
     visit('/sign-in')
 
     fill_in 'username', with: user.email
@@ -36,7 +38,7 @@ describe('User can login', {:type => :feature}) do
   end
 
   it('does not log me in with invalid credentials') do
-    user = create_user
+    user = create_confirmed_user
 
     visit('/sign-in')
 

@@ -23,7 +23,7 @@ describe('New User Sign-Up', {:type => :feature}) do
     fill_in 'password_confirmation', with: 'Cardinal99!'
     fill_in 'first_name', with: 'Charlie'
     fill_in 'last_name', with: 'Smith'
-    fill_in 'email', with: 'charlie.smith@gmail.com'
+    fill_in 'email', with: 'charlie.smith@mydoctorloan.com'
     click_button 'Register'
 
     expect(page).to have_content('Registration successful')
@@ -38,7 +38,7 @@ describe('New User Sign-Up', {:type => :feature}) do
     fill_in 'password_confirmation', with: '123abc'
     fill_in 'first_name', with: 'Charlie'
     fill_in 'last_name', with: 'Smith'
-    fill_in 'email', with: 'charlie.smith@gmail.com'
+    fill_in 'email', with: 'charlie.smith@mydoctorloan.com'
     click_button 'Register'
 
     expect(page).to have_content('Registration failed.')
