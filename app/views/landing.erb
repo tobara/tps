@@ -53,7 +53,7 @@
       </div>
       <form action="/reset" method="post" id="form-style">
         <input type="text" placeholder="Email" name="email"/>
-        <button type="submit">RESET PASSWORD</button>
+        <button type="submit" name="RESET PASSWORD">RESET PASSWORD</button>
       </form>
     </div>
   </div>
@@ -94,7 +94,7 @@
         <a href="/user/new" id="register_link" onclick="openForms(event)" name="signUp">
         <span id="register_span" name="signUp">Register</span>
         </a>
-        <p class="message">Forgot your Password? <a href="/reset" onclick="openForms(event)" name="forgotPass">Reset your password</a></p>
+        <p class="message">Forgot your Password? <a href="/reset" id="reset_pass_link" onclick="openForms(event)" name="forgotPass">Reset your password</a></p>
       </div>
 
       <div class="landing__quickpay">

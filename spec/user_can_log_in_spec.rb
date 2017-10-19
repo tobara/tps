@@ -47,7 +47,7 @@ describe('User can login', {:type => :feature}) do
 
     click_button 'LOGIN'
 
-    expect(page).not_to have_content('Sign Out')
+    expect(page).not_to have_content('Nothing to see here')
     expect(page).to have_content('Login Failed')
   end
 end
