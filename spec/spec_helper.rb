@@ -5,61 +5,17 @@ require 'rack/test'
 require 'capybara'
 require 'database_cleaner'
 require 'pry'
+require_relative 'support/database_cleaner'
+require_relative 'support/user_generation'
 
 set :environment, :test
 
-#specify that the app is a Sinatra app
 def app
   Sinatra::Application
 end
 
-def create_user
-  user = User.create(
-      :username => 'pescobar',
-      :email => 'pablo.escobar@mydoctorloan.com',
-      :first_name => 'Pablo',
-      :last_name => 'Escobar',
-      :password => 'PabloKnowsAll100!',
-      :password_confirmation => 'PabloKnowsAll100!'
-  )
-end
+ActiveRecord::Base.logger.level = 1
 
-def create_confirmed_user
-  user = User.create(
-    :username => 'pescobar',
-    :email => 'pablo.escobar@mydoctorloan.com',
-    :first_name => 'Pablo',
-    :last_name => 'Escobar',
-    :password => 'PabloKnowsAll100!',
-    :password_confirmation => 'PabloKnowsAll100!',
-    :confirm_token => nil,
-    :email_confirmed => true
-  )
-end
-
-
-#make Rack::Text available to all spec contexts
 RSpec.configure do |config|
   config.include Rack::Test::Methods
-
-  config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.strategy = :transaction
-  end
-
-  config.before(:each, :js => true) do
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
-
 end
