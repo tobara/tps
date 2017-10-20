@@ -1,19 +1,17 @@
 source "https://rubygems.org"
 
-gem "sinatra"
-gem "sinatra-activerecord"
+gem 'actionmailer'
 gem 'pg'
+gem 'sinatra'
+gem 'sinatra-activerecord'
 gem 'sinatra-flash'
-
-gem 'pry'
-gem 'shotgun'  #Autoreloader: $shotgun server.rb
-gem "capybara"
-gem "rspec"
 gem 'sinatra-contrib'
-gem 'database_cleaner'
-gem 'poltergeist'
 
-
-
-
-
+group :development, :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'poltergeist'
+  gem 'pry'
+  gem 'rspec'
+  gem 'shotgun'  #Autoreloader: $shotgun server.rb
+end
