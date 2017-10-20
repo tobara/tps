@@ -1,3 +1,4 @@
+require 'dotenv/load'
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/flash'
@@ -20,9 +21,9 @@ configure do
     authentication: :plain,
     domain: "example.com",
     enable_starttls_auto: true,
-    password: "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",
+    password: ENV['SENDGRID_KEY'],
     port: 587,
-    user_name: "apikey"
+    user_name: ENV['SENDGRID_USERNAME']
   }
 end
 

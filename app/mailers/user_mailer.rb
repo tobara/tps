@@ -7,7 +7,7 @@ class UserMailer < ActionMailer::Base
 
     mail(
       to: "#{user.first_name} <#{user.email}>",
-      subject: "Registration Confirmation for Awesome App",
+      subject: "Registration Confirmation for EDS Tuition Portal",
       template: "registration_confirmation"
     ) do |format|
       format.text
