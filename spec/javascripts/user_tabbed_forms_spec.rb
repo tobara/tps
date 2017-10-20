@@ -33,17 +33,17 @@ feature 'user can access all user forms', %{
     click_link "Register"
 
     expect(page).to have_selector("input[placeholder='Password Confirmation']")
-    expect(current_path).to_not have_content('/user/new')
+    expect(page).to_not have_current_path '/user/new'
   end
 
   scenario "user can view reset password overlay form", js: true do
-    # visit "/"
+    visit "/"
 
-    # click_link "Reset your password"
+    click_link "Reset your password"
+
 
     # expect(page).to have_selector("input[placeholder='Email']")
-    # expect(current_path).to_not have_content('/reset')
-    #Need to review
+    expect(page).to_not have_current_path '/reset'
   end
 end
 

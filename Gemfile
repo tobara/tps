@@ -13,7 +13,8 @@ gem "rspec"
 gem 'sinatra-contrib'
 gem 'database_cleaner'
 gem 'poltergeist'
-
+gem 'watir'
+gem 'selenium-webdriver'
 
 
 
