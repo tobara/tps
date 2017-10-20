@@ -1,30 +1,31 @@
-require "sinatra"
-require "sinatra/activerecord"
+require 'dotenv/load'
+require 'sinatra'
+require 'sinatra/activerecord'
 require 'sinatra/flash'
 require 'action_mailer'
 require_relative 'app/models/user'
 require_relative 'app/mailers/user_mailer'
 require_relative 'app/mailers/application_mailer'
-set :views, Proc.new { File.join(root, "app/views") }
 
+set :views, Proc.new { File.join(root, "app/views") }
 
 configure do
   enable :sessions
   set :session_secret, "secret"
-  ActionMailer::Base.raise_delivery_errors = true
-  ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
-   :address => 'smtp.sendgrid.net',
-   :port           => 587,
-   :domain         => "example.com",
-   :authentication => :plain,
-   :user_name => "apikey",
-   :password => "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",
-   :enable_starttls_auto => true
-  }
-  ActionMailer::Base.view_paths = File.expand_path('../../tps/app/views/user_mailer', __FILE__)
-end
 
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.raise_delivery_errors = true
+  ActionMailer::Base.view_paths = File.expand_path('../../tps/app/views/', __FILE__)
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    authentication: :plain,
+    domain: "example.com",
+    enable_starttls_auto: true,
+    password: ENV['SENDGRID_KEY'],
+    port: 587,
+    user_name: ENV['SENDGRID_USERNAME']
+  }
+end
 
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
@@ -79,7 +80,6 @@ get '/user/new' do
 end
 
 post '/user/new' do
-
   user = User.new(
     :username => params[:username],
     :email => params[:email],
@@ -93,7 +93,9 @@ post '/user/new' do
     flash[:notice] = "Registration successful."
     user.set_confirmation_token
     user.save(validate: false)
-    UserMailer.registration_confirmation(user).deliver_now
+
+    UserMailer.registration_confirmation(request, user).deliver_now
+
     flash[:success] = "Please confirm your email address to continue"
     redirect '/'
   else
@@ -126,5 +128,3 @@ def confirm_email
     redirect_to '/'
   end
 end
-
-
