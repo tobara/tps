@@ -1,7 +1,6 @@
 source "https://rubygems.org"
 
 gem 'actionmailer'
-gem 'dotenv'
 gem 'pg'
 gem 'sinatra'
 gem 'sinatra-activerecord'
@@ -11,11 +10,10 @@ gem 'sinatra-contrib'
 
 group :development, :test do
   gem 'capybara'
+  gem 'dotenv'
   gem 'database_cleaner'
   gem 'poltergeist'
   gem 'pry'
   gem 'rspec'
-  gem 'selenium-webdriver'
   gem 'shotgun'  #Autoreloader: $shotgun server.rb
-  gem 'watir'
 end
