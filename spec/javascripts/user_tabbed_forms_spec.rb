@@ -1,49 +1,58 @@
-# require 'spec_helper'
-# require 'test/unit'
-# require 'rack/test'
-# require 'capybara/rspec'
-# require 'capybara/poltergeist'
-# require 'pry'
+require 'spec_helper'
+require 'test/unit'
+require 'rack/test'
+require 'capybara/rspec'
+require 'capybara/poltergeist'
+require 'pry'
 
-# Capybara.app = Sinatra::Application
-# Capybara.register_driver :poltergeist do |app|
-#   Capybara::Poltergeist::Driver.new(app, {js_errors: false})
-# end
-# set(:show_exceptions, false)
+Capybara.app = Sinatra::Application
+Capybara.javascript_driver = :poltergeist
 
 
-# feature 'user can access all user forms', %{
-#   As a potential user
-#   I want to know I can
-#   register, login, and reset my password
-# } do
+feature 'user can access all user forms', %{
+  As a potential user
+  I want to know I can
+  register, login, and reset my password
+} do
 
-#   scenario "user can view sign-in overlay form", js: true do
-#     visit "/"
 
-#     click_link "Sign In"
 
-#     expect(page).to have_content ("Forgot Password?")
-#     expect(page).to_not have_content("Not registered? Create an account")
-#   end
+  scenario "user can view sign-in overlay form", js: true do
+    temp_fix
 
-#   scenario "user can view sign-up overlay form", js: true do
-#     visit "/"
+    visit "/"
 
-#     click_link "Register"
+    click_link "Sign In"
 
-#     expect(page).to have_selector("input[placeholder='Password Confirmation']")
-#     expect(page).to_not have_current_path '/user/new'
-#   end
+    expect(page).to have_content ("Forgot Password?")
+    expect(page).to_not have_content("Not registered? Create an account")
+  end
 
-#   scenario "user can view reset password overlay form", js: true do
-#     visit "/"
+  scenario "user can view sign-up overlay form", js: true do
+    temp_fix
 
-#     click_link "Reset your password"
+    visit "/"
 
-#     expect(page.body).to have_selector("input[placeholder='Email']")
-#     expect(page).to_not have_current_path '/reset'
-#   end
-# end
+    click_link "Register"
+
+    expect(page).to have_selector("input[placeholder='Password Confirmation']")
+    expect(page).to_not have_current_path '/user/new'
+  end
+
+  scenario "user can view reset password overlay form", js: true do
+    temp_fix
+
+    visit "/"
+
+    click_link "Reset your password"
+
+    expect(page.body).to have_selector("input[placeholder='Email']")
+    expect(page).to_not have_current_path '/reset'
+  end
+end
+
+def temp_fix
+  page.driver.browser.js_errors = false
+end
 
 

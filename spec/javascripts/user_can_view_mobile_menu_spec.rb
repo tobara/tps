@@ -6,18 +6,7 @@ require 'capybara/poltergeist'
 require 'pry'
 
 Capybara.app = Sinatra::Application
-
-Capybara.default_driver = :poltergeist
-
-Capybara.register_driver :poltergeist do |app|
-   options = {
-    js_errors: false
-  }
-
-  Capybara::Poltergeist::Driver.new(app, options)
-end
-set(:show_exceptions, false)
-
+Capybara.javascript_driver = :poltergeist
 
 feature 'user can view mobile menu', %{
   As a potential user
@@ -28,7 +17,6 @@ feature 'user can view mobile menu', %{
 
   scenario "user can view sign-in overlay form", js: true do
     visit '/'
-
     page.current_window.resize_to(375, 667)
 
     find('#hamburger').click
