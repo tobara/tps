@@ -2,22 +2,22 @@
 
 ## Sign up
 
-- [ ] New user can sign up for account
-  - [ ] Requires unique username
-  - [ ] Requires unique email
-  - [ ] Requires matching passwords
-  - [ ] Bad submission shows errors on form
-  - [ ] Good submission redirects to sign in
+- [x] New user can sign up for account
+  - [x] Requires unique username
+  - [x] Requires unique email
+  - [x] Requires matching passwords
+  - [x] Bad submission shows errors on form
+  - [x] Good submission redirects to sign in
 
-- [ ] New user receives email verification
-  - [ ] Cannot sign in until account is verified
+- [x] New user receives email verification
+  - [x] Cannot sign in until account is verified
 
 ## Sign in
 
-- [ ] Existing user can sign in
-  - [ ] Can sign in with either username or email
+- [x] Existing user can sign in
+  - [x] Can sign in with either username or email
   - [ ] Bad submissions shows errors on form
-  - [ ] Good submission signs user in and redirects to dashboard
+  - [x] Good submission signs user in and redirects to dashboard
 
 - [ ] Existing user can reset lost password via email
 

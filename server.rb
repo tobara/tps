@@ -1,4 +1,4 @@
-require 'dotenv/load'
+require 'dotenv'
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/flash'
@@ -7,6 +7,7 @@ require_relative 'app/models/user'
 require_relative 'app/mailers/user_mailer'
 require_relative 'app/mailers/application_mailer'
 
+Dotenv.load
 set :views, Proc.new { File.join(root, "app/views") }
 
 configure do
@@ -70,6 +71,29 @@ get '/reset' do
   erb :reset_password
 end
 
+post '/reset' do
+  user = User.find_by(:email => params[:email])
+  if user != nil
+    user.set_reset_token
+    user.save(validate: false)
+
+    Usermailer.password_reset(request, user).deliver_now
+
+    flash[:success] = "An email has been sent to reset your password."
+    redirect '/'
+  else
+    flash[:notice] = "Password reset failed. " + user.errors.full_messsages.join(". ")
+  end
+end
+
+get '/:token/password_reset' do
+  erb :password_reset
+end
+
+post '/:token/password_reset' do
+  password_reset
+end
+
 get '/logout' do
   session.destroy if session[:user_id]
   redirect '/'
@@ -128,3 +152,20 @@ def confirm_email
     redirect_to '/'
   end
 end
+
+def password_reset
+  user = User.find_by_reset_token(params[:token])
+  user.update(
+    :password => params[:password],
+    :password_confirmation => params[:password_confirmation],
+    :reset_token => nil
+  )
+  if user.save?
+    flash[:success] = "Your password has been updated.  You may now Sign In"
+    redirect '/'
+  else
+    flash[:notice] = "Password reset failed. " + user.errors.full_messages.join(". ")
+  end
+end
+
+

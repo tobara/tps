@@ -19,3 +19,9 @@ ActiveRecord::Base.logger.level = 1
 RSpec.configure do |config|
   config.include Rack::Test::Methods
 end
+
+def computed_style(selector, prop)
+  page.evaluate_script(
+    "window.getComputedStyle(document.querySelector('#{selector}')).#{prop}"
+  )
+end

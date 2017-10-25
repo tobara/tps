@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'test/unit'
 require 'rack/test'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
 
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)

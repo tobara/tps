@@ -1,33 +1,52 @@
-
+require 'spec_helper'
 require 'test/unit'
 require 'rack/test'
-require 'rspec'
-require 'watir'
-require 'selenium-webdriver'
+require 'capybara/rspec'
+require 'capybara/poltergeist'
+require 'pry'
 
-browser = Watir::Browser.new :chrome
+Capybara.app = Sinatra::Application
+
+Capybara.default_driver = :poltergeist
+
+Capybara.register_driver :poltergeist do |app|
+   options = {
+    js_errors: false
+  }
+
+  Capybara::Poltergeist::Driver.new(app, options)
+end
+set(:show_exceptions, false)
 
 
+feature 'user can view mobile menu', %{
+  As a potential user
+  I want to know I can
+  navagiate the EDS website
+  on my phone
+} do
 
-driver = Selenium::WebDriver.for :chrome
+  scenario "user can view sign-in overlay form", js: true do
+    visit '/'
 
-RSpec.configure do |config|
-  config.before(:each) { @browser = browser }
-  config.after(:suite) { browser.close unless browser.nil? }
+    page.current_window.resize_to(375, 667)
+
+    find('#hamburger').click
+
+    before_hover = computed_style('.mobile-menu-list li a', 'color')
+
+    menu_item = find(:css, '.mobile-menu-list li a', match: :first)
+    menu_item.hover
+
+    sleep 1  #there has to be a better alternative
+
+    after_hover = computed_style('.mobile-menu-list li a', 'color')
+
+    expect(menu_item.text).to have_content('Tuition Plans')
+    expect(before_hover).to have_content('rgb(129, 129, 129)')
+    expect(after_hover).to have_content('rgb(241, 241, 241)')
+  end
 end
 
-describe "user can view mobile menu" do
-  before(:each) do
-    @browser.goto("http://localhost:9393/")
-    @browser.window.resize_to(375, 671)
-  end
 
-  describe "that we have hit a valid URL" do
-    it "should not return an invalid error message" do
-      @browser.element(id: "hamburger").click
 
-      @browser.ul(:class,"mobile-menu-list").li(:text,"Tuition Plans").visible?.eql?(true)
-      @browser.p(:text, "CIRCLE OF FRIENDS").visible?.eql?(false)
-    end
-  end
-end
