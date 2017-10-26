@@ -15,11 +15,9 @@ class User < ActiveRecord::Base
     end
   end
 
-  def resetting_password
-    self.password = nil
-  end
-
   def set_reset_token
-    self.reset_token = SecureRandom.urlsafe_base64.to_s
+    if self.reset_token.blank?
+      self.reset_token = SecureRandom.urlsafe_base64.to_s
+    end
   end
 end

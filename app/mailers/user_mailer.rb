@@ -15,14 +15,14 @@ class UserMailer < ActionMailer::Base
     end
   end
 
-  def password_reset(request, user)
+  def reset_password(request, user)
     @user = user
-    @url = "http://@#{request.host}:#{request.port}/#{user.pass_token}/pass_email/"
+    @url = "http://#{request.host}:#{request.port}/#{user.reset_token}/password_reset"
 
     mail(
       to: "#{user.first_name} <#{user.email}>",
       subject: "Password Reset for EDS Tuition Portal",
-      template: "password_reset"
+      template: "reset_password"
     ) do |format|
       format.text
       format.html

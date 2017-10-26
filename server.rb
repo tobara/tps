@@ -1,3 +1,4 @@
+require 'addressable/uri'
 require 'dotenv'
 require 'sinatra'
 require 'sinatra/activerecord'
@@ -6,6 +7,7 @@ require 'action_mailer'
 require_relative 'app/models/user'
 require_relative 'app/mailers/user_mailer'
 require_relative 'app/mailers/application_mailer'
+require 'pry'
 
 Dotenv.load
 set :views, Proc.new { File.join(root, "app/views") }
@@ -29,6 +31,7 @@ configure do
 end
 
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+VERIFY_TOKEN_PATH = /.*\/(.*)\//
 
 get '/' do
   if !logged_in?
@@ -68,7 +71,7 @@ post '/session/new' do
 end
 
 get '/reset' do
-  erb :reset_password
+  erb :reset
 end
 
 post '/reset' do
@@ -77,7 +80,7 @@ post '/reset' do
     user.set_reset_token
     user.save(validate: false)
 
-    Usermailer.password_reset(request, user).deliver_now
+    UserMailer.reset_password(request, user).deliver_now
 
     flash[:success] = "An email has been sent to reset your password."
     redirect '/'
@@ -90,8 +93,10 @@ get '/:token/password_reset' do
   erb :password_reset
 end
 
+
 post '/:token/password_reset' do
-  password_reset
+  uri = Addressable::URI.parse(request.env['HTTP_REFERER'])
+  post_token(uri)
 end
 
 get '/logout' do
@@ -153,19 +158,23 @@ def confirm_email
   end
 end
 
-def password_reset
-  user = User.find_by_reset_token(params[:token])
-  user.update(
+def password_reset(reset_token_for)
+  user = User.find_by reset_token: reset_token_for
+  if user.update_attributes(
     :password => params[:password],
     :password_confirmation => params[:password_confirmation],
     :reset_token => nil
-  )
-  if user.save?
+    )
     flash[:success] = "Your password has been updated.  You may now Sign In"
     redirect '/'
   else
     flash[:notice] = "Password reset failed. " + user.errors.full_messages.join(". ")
   end
+end
+
+def post_token(uri)
+  reset_token_for = VERIFY_TOKEN_PATH.match(uri)[1]
+  password_reset(reset_token_for)
 end
 
 
