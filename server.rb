@@ -153,7 +153,7 @@ def confirm_email
     redirect '/'
   else
     flash[:notice] = "Sorry. User does not exist"
-    redirect_to '/'
+    redirect '/'
   end
 end
 

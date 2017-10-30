@@ -16,8 +16,15 @@ end
 
 ActiveRecord::Base.logger.level = 1
 
+
 RSpec.configure do |config|
   config.include Rack::Test::Methods
+  ActionMailer::Base.deliveries.clear
+  ActionMailer::Base.delivery_method = :test
+  ActionMailer::Base.smtp_settings = {
+    address: 'localhost',
+    port: 3000
+  }
 end
 
 def computed_style(selector, prop)
@@ -25,3 +32,4 @@ def computed_style(selector, prop)
     "window.getComputedStyle(document.querySelector('#{selector}')).#{prop}"
   )
 end
+
