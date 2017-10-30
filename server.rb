@@ -95,8 +95,7 @@ end
 
 
 post '/:token/password_reset' do
-  uri = Addressable::URI.parse(request.env['HTTP_REFERER'])
-  post_token(uri)
+  password_reset
 end
 
 get '/logout' do
@@ -158,8 +157,8 @@ def confirm_email
   end
 end
 
-def password_reset(reset_token_for)
-  user = User.find_by reset_token: reset_token_for
+def password_reset
+  user = User.find_by reset_token: params[:token]
   if user.update_attributes(
     :password => params[:password],
     :password_confirmation => params[:password_confirmation],
@@ -172,9 +171,5 @@ def password_reset(reset_token_for)
   end
 end
 
-def post_token(uri)
-  reset_token_for = VERIFY_TOKEN_PATH.match(uri)[1]
-  password_reset(reset_token_for)
-end
 
 
