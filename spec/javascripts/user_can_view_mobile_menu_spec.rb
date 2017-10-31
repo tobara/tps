@@ -8,12 +8,7 @@ require 'pry'
 Capybara.app = Sinatra::Application
 Capybara.javascript_driver = :poltergeist
 
-feature 'user can view mobile menu', %{
-  As a potential user
-  I want to know I can
-  navagiate the EDS website
-  on my phone
-} do
+describe('User can view mobile menu', {:type => :feature}) do
 
   scenario "user can view sign-in overlay form", js: true do
     visit '/'

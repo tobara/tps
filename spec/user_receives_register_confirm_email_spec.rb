@@ -8,7 +8,8 @@ set(:show_exceptions, false)
 
 describe('User receives confirmation email', {:type => :feature}) do
 
-  it('receives email with confirm token link') do
+  scenario('receives email with confirm token link') do
+
     ActionMailer::Base.deliveries.clear
 
     visit '/user/new'
@@ -30,7 +31,8 @@ describe('User receives confirmation email', {:type => :feature}) do
     expect(ActionMailer::Base.deliveries.count).to eq(1)
   end
 
-  it('confirms email token link') do
+  scenario('User clicks confirmation link') do
+
     ActionMailer::Base.deliveries.clear
 
     visit '/user/new'

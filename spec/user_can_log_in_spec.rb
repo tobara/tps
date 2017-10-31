@@ -9,7 +9,8 @@ set(:show_exceptions, false)
 
 describe('User can login', {:type => :feature}) do
 
-  it('logs me in with valid username and password') do
+  scenario('user logs in with Username') do
+
     user = create_confirmed_user
 
     visit('/')
@@ -24,7 +25,8 @@ describe('User can login', {:type => :feature}) do
     expect(page).to have_content('Sign Out')
   end
 
-  it('logs me in with valid email and password') do
+  scenario('User logs in with Email') do
+
     user = create_confirmed_user
 
     visit('/sign-in')
@@ -38,7 +40,8 @@ describe('User can login', {:type => :feature}) do
     expect(page).to have_content('Sign Out')
   end
 
-  it('does not log me in with invalid credentials') do
+  scenario('User cannot log in with invalid credentials') do
+
     user = create_confirmed_user
 
     visit('/sign-in')
