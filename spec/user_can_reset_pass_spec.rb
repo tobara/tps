@@ -9,7 +9,8 @@ set(:show_exceptions, false)
 
 describe('User can reset password', {:type => :feature}) do
 
-  it('receives email with reset token link') do
+  scenario('User receives email confirmation after registration') do
+
     ActionMailer::Base.deliveries.clear
 
     user = create_confirmed_user
@@ -30,7 +31,8 @@ describe('User can reset password', {:type => :feature}) do
     expect(ActionMailer::Base.deliveries.count).to eq(1)
   end
 
-  it('resets password from reset token link') do
+  scenario('User resets password from reset token link') do
+
     ActionMailer::Base.deliveries.clear
 
     user = create_confirmed_user

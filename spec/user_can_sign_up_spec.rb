@@ -7,15 +7,19 @@ Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
 describe('New User Sign-Up', {:type => :feature}) do
-  it('it gets me the sign-up form') do
+
+  scenario('User can view sign-up form') do
+
     visit('/')
+
     click_link 'Register'
 
     expect(page).to have_selector("input[placeholder='Password Confirmation']")
     expect(page).not_to have_content('EDS Tuition Portal')
   end
 
-  it('correctly inputs into sign-up form') do
+  scenario('User correctly inputs valid credentials') do
+
     visit('/user/new')
 
     fill_in 'username', with: 'prodigy_internet'
@@ -30,7 +34,8 @@ describe('New User Sign-Up', {:type => :feature}) do
     expect(page).not_to have_content('Registration failed.')
   end
 
-    it('incorrectly inputs into sign-up form') do
+  scenario('User inputs invalid credentials into sign-up form') do
+
     visit('/user/new')
 
     fill_in 'username', with: 'prodigy_internet'

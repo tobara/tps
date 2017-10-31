@@ -8,14 +8,7 @@ require 'pry'
 Capybara.app = Sinatra::Application
 Capybara.javascript_driver = :poltergeist
 
-
-feature 'user can access all user forms', %{
-  As a potential user
-  I want to know I can
-  register, login, and reset my password
-} do
-
-
+describe('User access tabbed forms', {:type => :feature}) do
 
   scenario "user can view sign-in overlay form", js: true do
     temp_fix
