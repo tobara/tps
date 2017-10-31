@@ -136,6 +136,15 @@ get '/:token/confirm_email/' do
   confirm_email
 end
 
+get '/user/:id/settings' do
+  if !logged_in?
+    redirect '/'
+  else
+    user = current_user
+    erb :account_settings, :locals => { :user => user }
+  end
+end
+
 def logged_in?
     !!session[:user_id]
 end
