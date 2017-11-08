@@ -9,6 +9,17 @@ def create_user
   )
 end
 
+def another_user
+  user = User.create(
+    :username => 'pescobar22',
+    :email => 'pedro.escobar@mydoctorloan.com',
+    :first_name => 'Pedro',
+    :last_name => 'Escobar',
+    :password => 'PedroKnowsAll100!',
+    :password_confirmation => 'PedroKnowsAll100!'
+    )
+end
+
 def create_confirmed_user
   user = User.create(
     :username => 'pescobar',
