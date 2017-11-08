@@ -145,6 +145,15 @@ get '/user/:id/settings' do
   end
 end
 
+get '/user/:id/settings/username/edit' do
+  if !logged_in?
+    redirect '/'
+  else
+    user = current_user
+    erb :edit_username, :locals => { :user => user }
+  end
+end
+
 def logged_in?
     !!session[:user_id]
 end

@@ -3,6 +3,8 @@
   <top-border class="top__border"></top-border>
   <div class="content__space">
     Account Settings for <%= user.first_name %>
+   <br>
+   <%= user.username %> <a href="/user/<%= session[:user_id] %>/settings/username/edit"> change </a>
   </div>
   <right-border class="right__border"></right-border>
   <bottom-border class="bottom__border"></bottom-border>
