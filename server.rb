@@ -154,6 +154,10 @@ get '/user/:id/settings/username/edit' do
   end
 end
 
+post '/user/:id/settings/username/edit' do
+  change_username
+end
+
 def logged_in?
     !!session[:user_id]
 end
@@ -187,6 +191,20 @@ def password_reset
   else
     flash[:notice] = "Password reset failed. " + user.errors.full_messages.join(". ")
   end
+end
+
+def change_username
+  user = current_user
+  if user.update_attributes(:username => params[:username]) && match_username
+    flash[:success] = "Your Username has been changed."
+    redirect '/user/:id/settings'
+  else
+    flash[:notice] = "Username change failed. " + user.errors.full_messages.join(". ")
+  end
+end
+
+def match_username
+  params[:username] == params[:username_confirmation]
 end
 
 
