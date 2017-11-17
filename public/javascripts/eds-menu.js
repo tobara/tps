@@ -1,12 +1,6 @@
-
 function displayMenu() {
-  menuDiv = document.getElementById("mobileMenu")
-
-  if (menuDiv.style.height === "0%") {
-      menuDiv.style.height = "100%";
-  } else {
-      menuDiv.style.height = "0%";
-  }
+  var menu = document.getElementById("mobileMenu");
+  menu.style.height = menu.style.height === "0%" ? "100%" : "0%";
 }
 
 function closeMenu() {

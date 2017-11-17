@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "application_name@domain.com"
+  default from: 'application_name@domain.com'
 
   def registration_confirmation(request, user)
     @user = user
@@ -7,8 +7,8 @@ class UserMailer < ActionMailer::Base
 
     mail(
       to: "#{user.first_name} <#{user.email}>",
-      subject: "Registration Confirmation for EDS Tuition Portal",
-      template: "registration_confirmation"
+      subject: 'Registration Confirmation for EDS Tuition Portal',
+      template: 'registration_confirmation'
     ) do |format|
       format.text
       format.html
@@ -21,8 +21,8 @@ class UserMailer < ActionMailer::Base
 
     mail(
       to: "#{user.first_name} <#{user.email}>",
-      subject: "Password Reset for EDS Tuition Portal",
-      template: "reset_password"
+      subject: 'Password Reset for EDS Tuition Portal',
+      template: 'reset_password'
     ) do |format|
       format.text
       format.html

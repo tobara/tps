@@ -1,13 +1,13 @@
+require 'action_mailer'
 require 'addressable/uri'
 require 'dotenv'
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/flash'
-require 'action_mailer'
-require_relative 'app/models/user'
-require_relative 'app/mailers/user_mailer'
-require_relative 'app/mailers/application_mailer'
-require 'pry'
+
+['models', 'mailers'].each do |dir|
+  Dir["./app/#{dir}/*.rb"].each { |f| require f }
+end
 
 Dotenv.load
 set :views, Proc.new { File.join(root, "app/views") }
@@ -93,7 +93,6 @@ get '/:token/password_reset' do
   erb :password_reset
 end
 
-
 post '/:token/password_reset' do
   password_reset
 end
@@ -109,12 +108,12 @@ end
 
 post '/user/new' do
   user = User.new(
-    :username => params[:username],
-    :email => params[:email],
-    :first_name => params[:first_name],
-    :last_name => params[:last_name],
-    :password => params[:password],
-    :password_confirmation => params[:password_confirmation]
+    username: params[:username],
+    email: params[:email],
+    first_name: params[:first_name],
+    last_name: params[:last_name],
+    password: params[:password],
+    password_confirmation: params[:password_confirmation]
   )
 
   if user.save
@@ -141,7 +140,7 @@ get '/user/:id/settings' do
     redirect '/'
   else
     user = current_user
-    erb :account_settings, :locals => { :user => user }
+    erb :account_settings, locals: { user: user }
   end
 end
 
@@ -150,7 +149,7 @@ get '/user/:id/settings/username/edit' do
     redirect '/'
   else
     user = current_user
-    erb :edit_username, :locals => { :user => user }
+    erb :edit_username, locals: { user: user }
   end
 end
 
@@ -168,8 +167,9 @@ end
 
 def confirm_email
   user = User.find_by_confirm_token(params[:token])
+
   if user != nil
-    user.validate_email
+    user.confirm_email
     user.save(validate: false)
     flash[:notice] = "Confirmed.  Please Sign In."
     redirect '/'
@@ -182,10 +182,10 @@ end
 def password_reset
   user = User.find_by reset_token: params[:token]
   if user.update_attributes(
-    :password => params[:password],
-    :password_confirmation => params[:password_confirmation],
-    :reset_token => nil
-    )
+    password: params[:password],
+    password_confirmation: params[:password_confirmation],
+    reset_token => nil
+  )
     flash[:success] = "Your password has been updated.  You may now Sign In"
     redirect '/'
   else
@@ -195,7 +195,7 @@ end
 
 def change_username
   user = current_user
-  if user.update_attributes(:username => params[:username]) && match_username
+  if user.update_attributes(username: params[:username]) && match_username
     flash[:success] = "Your Username has been changed."
     redirect '/user/:id/settings'
   else
@@ -206,6 +206,3 @@ end
 def match_username
   params[:username] == params[:username_confirmation]
 end
-
-
-

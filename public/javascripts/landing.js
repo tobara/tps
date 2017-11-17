@@ -1,12 +1,11 @@
-
 function openForms(e) {
     e.preventDefault();
-    formName = e.currentTarget.name;
-    tabBtns = document.getElementsByClassName('tablinks');
-    tabForm(e, formName);
 
+    var formName = e.currentTarget.name;
+
+    tabForm(e, formName);
     document.getElementById("loginForm").style.height = "100%";
-    tabBtns[formName].className += " active"
+    document.getElementsByClassName("tablinks")[formName].className += " active"
 }
 
 function closeForms() {
