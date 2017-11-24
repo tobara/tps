@@ -17,10 +17,10 @@ describe('Auth user can change their username', {:type => :feature}) do
 
     click_link 'Account Settings'
 
-    click_link 'change'
+    click_link 'Edit'
 
     expect(page).to have_button('Save')
-    expect(page).to_not have_content('Account Settings')
+    expect(page).to_not have_content('PARENT LAST NAME')
   end
 
   scenario('auth user cannot change username without matching entries') do

@@ -10,7 +10,7 @@ Capybara.javascript_driver = :poltergeist
 
 describe('User can view mobile menu', {:type => :feature}) do
 
-  scenario "user can view sign-in overlay form", js: true do
+  scenario 'user can view sign-in overlay form', js: true do
     visit '/'
     page.current_window.resize_to(375, 667)
 

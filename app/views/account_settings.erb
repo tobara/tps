@@ -1,11 +1,104 @@
+<script src="/javascripts/user-name.js" type="text/javascript"></script>
+<script> var userID = "<%= params[:id] %>"; </script>
 <main class="eds__main">
   <left-border class="left__border"></left-border>
   <top-border class="top__border"></top-border>
-  <div class="content__space">
-    Account Settings for <%= user.first_name %>
-   <br>
-   <%= user.username %> <a href="/user/<%= session[:user_id] %>/settings/username/edit"> change </a>
-  </div>
+  <div class="user__space">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="card">
+          <div class="header">
+              <h4 class="title">Account Settings</h4>
+          </div>
+          <div class="content">
+              <form>
+                  <div class="row">
+                      <div class="col-md-5">
+                          <div class="form-group">
+                              <label>Student (disabled)</label>
+                              <input type="text" class="form-control" disabled placeholder="Company" value="Jimmy AppleSeed">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                          <label>Username</label>
+
+                          <input type="text" class="form-control" name="usernameField" id="usernameField" disabled placeholder="<%= user.username %>" >
+
+                        </div>
+                        <div class ="col-md-2">
+                          <label></label>
+
+                          <a href="/user/<%= user.id %>/settings/username/edit" id="nameAction" onclick="nameUpdate(event);" class="btn btn-info btn-fill">Edit</a>
+
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label for="exampleInputEmail1">Email address</label>
+                              <input type="email" class="form-control" placeholder="Email">
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label>Parent First Name</label>
+                              <input type="text" class="form-control" placeholder="First Name" value="">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label>Parent Last Name</label>
+                              <input type="text" class="form-control" placeholder="Last Name" value="">
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label>Billing Address</label>
+                              <input type="text" class="form-control" placeholder="Billing Address" value="">
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label>City</label>
+                              <input type="text" class="form-control" placeholder="City" value="">
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label>Country</label>
+                              <input type="text" class="form-control" placeholder="Country" value="">
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label>Postal Code</label>
+                              <input type="number" class="form-control" placeholder="ZIP Code">
+                          </div>
+                      </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-info btn-fill pull-right">Update Account Profile</button>
+                  <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <right-border class="right__border"></right-border>
   <bottom-border class="bottom__border"></bottom-border>
 </main>
@@ -15,3 +108,8 @@
 </aside>
 <footer class="eds__footer">
 </footer>
+
+
+
+
+

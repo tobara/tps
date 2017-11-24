@@ -211,6 +211,7 @@ header {
 .eds__header p {
   font-family: "Times New Roman", times, serif;
   font-size: 14px;
+  color: #0A4495;
 }
 
 /*** HEADER ENDS ******************************************/
@@ -611,6 +612,70 @@ div.tab button.active {
 
 
 /*** LANDING ENDS **************************************************/
+
+/*** DASHBOARD =====> USER SETTINGS START **/
+
+.user__space {
+  font-size: 16px;
+}
+
+.user-attribute {
+  font-size: 20px;
+  /*border: 1px solid #C3D5F0; USE FOR ON BUTTON CLICK*/
+  margin-left: 10px;
+}
+
+
+.attr-header {
+  color:#C3D5F0;
+}
+
+.username-form {
+  display:none;
+}
+
+.username-form button {
+  text-transform: uppercase;
+  outline: 0;
+  background: rgba(44, 100, 180, 1);
+  width: 50px;
+  height: 25px;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 12px;
+}
+
+.username-form input {
+  max-width: 250px;
+  -webkit-appearance: textfield;
+  background-color: white;
+  -webkit-rtl-ordering: logical;
+  cursor: auto;
+  padding: 1px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: initial;
+  border-image: initial;
+  -webkit-writing-mode: horizontal-tb;
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  margin: 0em;
+  font: 400 11px system-ui;
+}
+
+.freeze {
+  position:absolute;
+}
+
+/********** DASHBOARD ===> USER SETTINGS END **********************/
 
 
 /*** FORMS START ***/
