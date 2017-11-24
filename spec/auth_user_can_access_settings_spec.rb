@@ -18,17 +18,17 @@ describe('Auth user can access their settings', {:type => :feature}) do
 
     click_link 'Account Settings'
 
-    expect(page).to have_content("#{user.first_name}")
-    expect(page).not_to have_content('Nothing to see here')
+    expect(page).to have_content('Student')
+    expect(page).not_to have_content("#{user.first_name}")
   end
 
   scenario('non-authenticated user cannot access settings') do
 
     user = create_confirmed_user
 
-    visit '/user/:id/settings'
+    visit '/user/1/settings'
 
     expect(page).to have_content('Sign In')
-    expect(page).to_not have_content(user.first_name)
+    expect(page).to_not have_content("#{user.first_name}")
   end
 end

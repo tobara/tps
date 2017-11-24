@@ -1,8 +1,8 @@
 <main class="eds__main">
   <left-border class="left__border"></left-border>
   <top-border class="top__border"></top-border>
-  <div class="content__space">
-    Nothing to see here.
+  <div class="user__space">
+    <p>Welcome <%= user.first_name %>,</p>
     <a href="/user/<%= session[:user_id] %>/settings"> Account Settings </a>
   </div>
   <right-border class="right__border"></right-border>

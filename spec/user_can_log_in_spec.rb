@@ -21,8 +21,8 @@ describe('User can login', {:type => :feature}) do
 
     click_button 'LOGIN'
 
-    expect(page).not_to have_content('EDS Tuition Portal')
-    expect(page).to have_content('Sign Out')
+    expect(page).not_to have_content('Forgot your Password?')
+    expect(page).to have_content("#{user.first_name}")
   end
 
   scenario('User logs in with Email') do
@@ -36,8 +36,8 @@ describe('User can login', {:type => :feature}) do
 
     click_button 'LOGIN'
 
-    expect(page).not_to have_content('EDS Tuition Portal')
-    expect(page).to have_content('Sign Out')
+    expect(page).not_to have_content('Forgot your Password?')
+    expect(page).to have_content("#{user.first_name}")
   end
 
   scenario('User cannot log in with invalid credentials') do
@@ -51,7 +51,7 @@ describe('User can login', {:type => :feature}) do
 
     click_button 'LOGIN'
 
-    expect(page).not_to have_content('Nothing to see here')
+    expect(page).not_to have_content("#{user.first_name}")
     expect(page).to have_content('Login Failed')
   end
 end

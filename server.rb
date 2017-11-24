@@ -3,6 +3,7 @@ require 'dotenv'
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/flash'
+require 'sinatra/json'
 require 'action_mailer'
 require_relative 'app/models/user'
 require_relative 'app/mailers/user_mailer'
@@ -42,7 +43,8 @@ get '/' do
 end
 
 get '/dashboard' do
-  erb :dashboard
+  user = current_user
+  erb :dashboard, :locals => { :user => user }
 end
 
 get '/sign-in' do
